@@ -185,18 +185,18 @@ max-width: 600px;
 
 /* --- Clases para Accesibilidad: Tamaño de Fuente --- */
 body.font-small {
-    font-size: 0.9em; /* O el valor que consideres apropiado */
+    font-size: 0.9em; 
 }
 
 body.font-large {
-    font-size: 1.1em; /* O el valor que consideres apropiado */
+    font-size: 1.1em; 
 }
 
 body.font-larger {
-    font-size: 1.25em; /* O el valor que consideres apropiado, aún más grande */
+    font-size: 1.25em; 
 }
 
-/* Puedes ajustar los valores 'em' según tu preferencia y el diseño general de tu sitio. */
+
 
 
 /* --- Clase para Accesibilidad: Alto Contraste --- */
@@ -205,8 +205,7 @@ body.high-contrast {
     color: #FFF !important; /* Texto blanco */
 }
 
-/* Es importante que también definas colores para elementos específicos que tengan sus propios colores */
-/* Por ejemplo, para enlaces, botones, fondos de secciones, etc., para asegurar el contraste. */
+
 body.high-contrast a {
     color: #FFFF00 !important; /* Enlaces amarillos o de otro color contrastante */
 }
@@ -214,9 +213,9 @@ body.high-contrast a {
 body.high-contrast header,
 body.high-contrast .container-baner,
 body.high-contrast .card-container {
-    background-color: #333 !important; /* Fondos de secciones en gris oscuro para contraste */
-    border-color: #FFF !important; /* Bordes blancos */
-    box-shadow: none !important; /* Quita sombras que podrían no contrastar bien */
+    background-color: #333 !important; 
+    border-color: #FFF !important; 
+    box-shadow: none !important; 
 }
 
 body.high-contrast button {
@@ -225,7 +224,7 @@ body.high-contrast button {
     border-color: #FFF !important;
 }
 
-/* Considera si otros elementos como inputs, iframes, etc., necesitan ajustes específicos */
+
 body.high-contrast input,
 body.high-contrast textarea {
     background-color: #222 !important;
@@ -236,22 +235,22 @@ body.high-contrast textarea {
 /* --- Contenedor Principal del Menú de Accesibilidad (Fijo) --- */
 .accessibility-menu-container {
     position: fixed;
-    bottom: 30px; /* Separación del borde inferior */
-    right: 30px;  /* Separación del borde derecho */
+    bottom: 30px; 
+    right: 30px;  
     z-index: 1000;
     display: flex;
-    flex-direction: column; /* Apila los elementos verticalmente */
-    align-items: flex-end; /* Alinea los elementos a la derecha */
+    flex-direction: column; 
+    align-items: flex-end;  
 }
 
 /* --- Botón Principal del Menú --- */
 .main-accessibility-button {
     width: 50px;
     height: 50px;
-    border-radius: 10px; /* Lo hace redondo */
+    border-radius: 10px; 
     background-color: #007bff;
     color: white;
-    font-size: 1.8em; /* Tamaño del icono */
+    font-size: 1.8em; 
     border: none;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -271,26 +270,26 @@ body.high-contrast textarea {
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 10px; /* Espacio entre el menú y el botón principal */
+    margin-bottom: 10px; 
     display: flex;
-    flex-direction: column; /* Apila los botones de opciones verticalmente */
-    gap: 8px; /* Espacio entre los botones individuales */
+    flex-direction: column; 
+    gap: 8px;
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 0.3s ease, transform 0.3s ease; /* Para una animación suave */
+    transition: opacity 0.3s ease, transform 0.3s ease; 
 }
 
 /* Clase para ocultar las opciones */
 .accessibility-options.hidden {
     opacity: 0;
-    transform: translateY(20px); /* Oculta hacia abajo */
-    pointer-events: none; /* Hace que no sean clickeables cuando están ocultas */
+    transform: translateY(20px); 
+    pointer-events: none; 
 }
 
 /* --- Estilos de los botones individuales dentro de las opciones --- */
 .accessibility-options button {
     padding: 8px 12px;
-    width: 100%; /* Ocupa todo el ancho del contenedor */
+    width: 100%; 
     cursor: pointer;
     background-color: #007bff;
     color: white;
