@@ -1,11 +1,12 @@
 :root {
-    --verde: #7DCBC8;
+    --color-azul-claro: #7DCBC8;
     --amarillo: #F4D87C;
     --color-texto-oscuro: #333;
     --color-hover-enlace: #007bff;
     --color-fondo-desplegable: #ffffff;
     --color-hover-desplegable: #f1f1f1;
     --sombra-desplegable: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    --gradient-banner: linear-gradient(to right,  #7EDBA2  0%,#C4B42D 92%);
 }
 
 /* Reset Básico */
@@ -24,7 +25,7 @@ body {
 
 /* --- Header y Navegación Principal --- */
 header {
-    background-color: var(--verde);
+    background-color: var(--color-azul-claro);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -36,6 +37,61 @@ header {
     height: auto; 
 }
 
+.logo img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ---------BUSCAR Y BOTON BUSCAR------------ */
+.search{
+    position: relative;
+    max-width: 300px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.search > input{
+    padding: 10px;
+    padding-right: 45px;
+    width: 100%;
+    height: 35px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+.search > input:focus {
+    border-color: #007bff;
+}
+
+.search >button{
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    color: #007bff;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.search > button:hover {
+    background-color: rgba(0, 123, 255, 0.1); /* Un fondo sutil al pasar el ratón */
+}
+
+.search > button i {
+    font-style: normal;
+    font-size: 19px; /* Tamaño del icono */
+}
+
+
+
 .menu-nav {
     display: flex; 
     padding: 0;
@@ -46,6 +102,8 @@ header {
     position: relative; 
     margin-left: 25px; 
 }
+
+
 
 .menu-nav li a {
     color: var(--color-texto-oscuro);
@@ -93,9 +151,7 @@ header {
 
 /* --- SECCIÓN: Contenedor del Banner --- */
 .container-baner {
-    /* margin: 30px auto; */
-    background: linear-gradient(to right, #7EDBA2
-    , #5188E6, #C4B42D);
+   background: var(--gradient-banner);
     height: 450px;
     display: flex;
     justify-content: space-between;
@@ -148,62 +204,53 @@ max-width: 600px;
 
      /* ---SECCION COMENTARIOS---- */
 
-.comment{
+.comment {
     margin: 30px 40px;
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 30px;
 }
 
-
-
-.text-comment{
- padding-top: 120px;
- padding-left: 20px;
- text-align: left;
- font-size: 20px;  
- font-weight: bolder; 
+.text-comment {
+    padding: 120px 0 0 120px; 
+    text-align: left;
+    font-size: 20px;
+    font-weight: bolder;
 }
 
-.second-section{
-    /* margin: 0px 120px; */
+.second-section {
     display: grid;
     gap: 30px;
 }
 
-.paragraph-comment-1{
-    width: 500px;
+/* Agrupación de estilos comunes para los párrafos de comentarios */
+.paragraph-comment-1,
+.paragraph-comment-2,
+.paragraph-comment-3 {
+    width: 445px;
     height: 120px;
     border-radius: 40px;
     text-align: center;
     padding: 25px;
     background-color: #7DCBC8;
-    justify-self: start;
+}
 
-}
-.paragraph-comment-2{
-    width: 500px;
-    height: 120px;
-    border-radius: 40px;
-    text-align: center;
-    padding: 25px;
-    background-color: #7DCBC8;
-    justify-self: end;
-}
-.paragraph-comment-3{
-    width: 500px;
-    height: 120px;
-    border-radius: 40px;
-    text-align: center;
-    padding: 25px;
-    background-color: #7DCBC8;
+.paragraph-comment-1,
+.paragraph-comment-3 {
     justify-self: start;
+}
+
+.paragraph-comment-2 {
+    justify-self: end;
 }
 
 
 
 /* --- SECCIÓN: Contenedores de Tarjetas (Main) --- */
 .container-two {
+    background:var(--gradient-banner);
+    width: auto;
+    height: 600px;
     display: flex;
     flex-direction: row;
     gap: 30px;
@@ -213,7 +260,7 @@ max-width: 600px;
 }
 
 .card-container {
-    background-color: var(--amarillo);
+    background-color: var(--color-azul-claro);
     display: flex;
     flex-grow: 1;
     flex-wrap: wrap;
@@ -225,7 +272,7 @@ max-width: 600px;
     height: 500px;
     padding: 20px;
     margin: 30px;
-    border: 1px solid black;
+    border: 3px solid white;
     border-radius: 10px;
     box-shadow: 8px 10px 0px black;
 }
@@ -237,6 +284,56 @@ max-width: 600px;
 .card-container > p {
     text-align: center;
 }
+
+/* ----------ESTILOS FOOTER------------------- */
+
+footer{
+    width: 100%;
+}
+.footer-content{
+    background-color: #C4B42D;
+    height: 200px;
+    margin: 5px 0 0  0 ;
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+.footer-content > p{
+    flex-basis: 70%;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 1.8;
+    text-align: left;
+    margin-right: 20px;
+}
+
+.social-icons{
+    flex-basis: 30%;
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    align-items: center;
+    
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.8em;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+
+
+/* ------BOTTON ACCESIILIDAD- -------- */
 
 /* --- Clases para Accesibilidad: Tamaño de Fuente --- */
 body.font-small {
