@@ -1,12 +1,18 @@
 :root {
     --color-azul-claro: #7DCBC8;
     --amarillo: #F4D87C;
-    --color-texto-oscuro: #333;
+    --color-texto-oscuro: #000;
     --color-hover-enlace: #007bff;
     --color-fondo-desplegable: #ffffff;
     --color-hover-desplegable: #f1f1f1;
     --sombra-desplegable: 0px 8px 16px 0px rgba(0,0,0,0.2);
     --gradient-banner: linear-gradient(to right,  #7EDBA2  0%,#C4B42D 92%);
+
+
+    /* Colores específicos para los iconos sociales */
+    --color-facebook: #1877F2;
+    --color-whatsapp: #25D366;
+    --color-instagram: #E4405F;
 }
 
 /* Reset Básico */
@@ -23,312 +29,333 @@ body {
     line-height: 1.6;
 }
 
-/* --- Header y Navegación Principal --- */
-header {
-    background-color: var(--color-azul-claro);
+
+.header-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
+    flex-direction: column; /* Apilar en móvil: logo, search, menu-toggle, nav */
+    align-items: center; /* Centrar horizontalmente */
+    width: 100%;
+    position: relative; /* CRUCIAL: si el menu-toggle es absolute, su posicionamiento será relativo a este */
+    z-index: 1000; /* Asegura que el header esté por encima del resto del contenido */
+}
+
+header { 
+    background-color: var(--color-azul-claro);
+    padding: 10px 15px; 
+    width: 100%;
 }
 
 .logo {
-    width: 200px;
-    height: auto; 
-}
-
-.logo img {
-    max-width: 100%;
+    width: 150px;
     height: auto;
-    display: block;
+    margin-bottom: 10px;
 }
 
-/* ---------BUSCAR Y BOTON BUSCAR------------ */
-.search{
-    position: relative;
-    max-width: 300px;
-    width: 100%;
+/* --- Campo de Búsqueda Visible (en móvil y desktop) --- */
+.search {
     display: flex;
     align-items: center;
-}
-
-.search > input{
-    padding: 10px;
-    padding-right: 45px;
-    width: 100%;
-    height: 35px;
-    border-radius: 15px;
+    margin-bottom: 10px; 
+    width: 90%; 
+    max-width: 350px; 
     border: 1px solid #ccc;
-    outline: none;
-}
-.search > input:focus {
-    border-color: #007bff;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 5px 10px;
 }
 
-.search >button{
-    position: absolute;
-    right: 5px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: transparent;
-    color: #007bff;
+.search input[type="text"] {
+    flex-grow: 1;
     border: none;
-    padding: 8px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
+    outline: none;
+    padding: 5px;
+    font-size: 1em;
 }
 
-.search > button:hover {
-    background-color: rgba(0, 123, 255, 0.1); /* Un fondo sutil al pasar el ratón */
-}
-
-.search > button i {
-    font-style: normal;
-    font-size: 19px; /* Tamaño del icono */
-}
-
-
-
-.menu-nav {
-    display: flex; 
-    padding: 0;
-    margin: 0;
-}
-
-.menu-nav li {
-    position: relative; 
-    margin-left: 25px; 
-}
-
-
-
-.menu-nav li a {
-    color: var(--color-texto-oscuro);
-    padding: 10px 0; 
+/* --- Botón Hamburguesa (CSS BASE para móvil) --- */
+.menu-toggle {
     display: block; 
-    font-size: 1.1em; 
-    transition: color 0.3s ease; 
+    position: absolute;
+    top: 15px;
+    right: 15px; /* Ajusta la posición horizontal del botón */
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    color: var(--color-texto-oscuro);
+    cursor: pointer;
+    z-index: 1001;
+    padding: 5px;
 }
 
-.menu-nav li a:hover {
+.menu-toggle:hover {
     color: var(--color-hover-enlace);
 }
 
-/* --- SECCIÓN: Lista Desplegable del Menú Cursos --- */
+/* --- NAVEGACIÓN PRINCIPAL (el contenedor <nav>) --- */
+nav {
+    width: 100%; 
+    max-height: 0; 
+    overflow: hidden; /* Oculta el contenido extra */
+    transition: max-height 0.3s ease-out; 
+    background-color: var(--color-azul-claro); }
+
+
+nav.active { 
+    max-height: 500px; 
+}
+
+
+.menu-nav { 
+    display: flex;
+    flex-direction: column; /* Apilar los ítems del menú */
+    width: 100%;
+    /* No necesita position:absolute ni top/left aquí si la nav lo contiene */
+    padding: 10px 0; /* Padding interno para los ítems del menú */
+}
+
+/* Resto de estilos para los li del menú móvil */
+.menu-nav li {
+    margin: 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.menu-nav li:last-child {
+    border-bottom: none;
+}
+.menu-nav li a {
+    padding: 12px 20px;
+    text-align: center;
+    font-size: 1.1em;
+    color: var(--color-texto-oscuro); /* Asegúrate de que el color sea legible */
+    display: block; /* Para que el padding y click área sean correctos */
+}
+
 .dropdown-content {
-    display: none; 
-    position: absolute;
-    background-color: var(--color-fondo-desplegable);
-    min-width: 250px;
-    box-shadow: var(--sombra-desplegable);
-    z-index: 1;
+    position: static; 
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 0;
     margin: 0;
-    border-radius: 4px;
-    top: 100%; 
-    left: 0;
+    display: none; /* Oculto por defecto */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
 }
 
 
-.dropdown:hover .dropdown-content {
+.dropdown.active .dropdown-content {
     display: block;
-}
+    max-height: 300px; }
 
 .dropdown-content li a {
-    color: var(--color-texto-oscuro);
-    padding: 12px 16px;
-    display: block;
-    text-align: left;
-    transition: background-color 0.3s ease;
-}
-
-.dropdown-content li a:hover {
-    background-color: var(--color-hover-desplegable);
-}
-
-/* --- SECCIÓN: Contenedor del Banner --- */
-.container-baner {
-   background: var(--gradient-banner);
-    height: 450px;
-    display: flex;
-    justify-content: space-between;
+    padding: 10px 30px;
     text-align: center;
-    gap: 40px;
+    font-size: 0.95em;
+    background-color: var(--color-fondo-desplegable);
+    color: var(--color-texto-oscuro);
+    display: block;
 }
+
+
+/* -------CONTAINER BANER (Bienvenido)-----------  */
+
+.container-baner {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    padding: 5px; 
+    gap: 2em;
+    background: var(--gradient-banner);
+}
+
 
 .info-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-    margin: 60px 120px;
+    text-align: center; 
 }
 
 .info-container > h1 {
-    font-weight: bold;
-    font-size: 60px;
+    font-size: 3em;
+    margin-bottom: 10px; 
 }
 
 .info-container > p {
-    font-weight: bolder;
-    text-align: center;
-    font-size: 45px;
+    margin-bottom: 15px; 
+    font-size: 1em;
+}
+
+.content-img {
+    max-width: 375px;
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    /* No hay margin-bottom aquí, el gap del flex container lo manejará */
+}
+
+.content-img > img {
+    width: 100%; /* La imagen siempre al 100% de su contenedor */
+    height: auto;
+    display: block; /* Elimina espacio extra debajo de la imagen */
 }
 
 .buton-unete {
-    background-color: #007bff;
-    color: white;
-    width: 90px;
-    height: 50px;
-    border: none; 
-    cursor: pointer; 
+    background-color: var(--amarillo); 
+    color: var(--color-texto-oscuro);
+    border: none;
+    width: 100px;
+    height: 35px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    display: block; 
+    margin: 1em;
 }
-
-
 .buton-unete:hover {
-    background-color: #9AC8EE;
+    opacity: 0.9;
 }
 
-.content-img{
-max-width: 600px;
+/* Si tu botón tiene un <a> dentro, estilo también el enlace */
+.buton-unete a {
+    color: inherit; /* Hereda el color del botón */
+    text-decoration: none;
+    display: block;
 }
-
-.content-img img{
-    max-width: fit-content;
-    height: 100%;
-}
-
-
-     /* ---SECCION COMENTARIOS---- */
+/* -------BANER COMENTARIOS ------------ */
 
 .comment {
-    margin: 30px 40px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    display: flex; /* Por defecto a columna flex para móvil */
+    flex-direction: column;
+    align-items: center;
+    margin: 1em auto;
+    gap: 2rem;
+    padding: 1em;
 }
 
 .text-comment {
-    padding: 120px 0 0 120px; 
-    text-align: left;
-    font-size: 20px;
-    font-weight: bolder;
+    text-align: center;
+    max-width: 320px; /* Limitar ancho en móvil */
+    font-size: 1.1em;
+    line-height: 1.5;
+    color: var(--color-texto-oscuro);
 }
 
 .second-section {
-    display: grid;
-    gap: 30px;
+    display: flex; /* Por defecto a columna flex para móvil */
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 90%;
+    max-width: 400px; /* Limitar ancho para el grupo de comentarios en móvil */
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* Agrupación de estilos comunes para los párrafos de comentarios */
+/* Los párrafos de comentarios individuales mantienen sus estilos móviles */
 .paragraph-comment-1,
 .paragraph-comment-2,
 .paragraph-comment-3 {
-    width: 445px;
-    height: 120px;
-    border-radius: 40px;
-    text-align: center;
-    padding: 25px;
-    background-color: #7DCBC8;
-}
-
-.paragraph-comment-1,
-.paragraph-comment-3 {
-    justify-self: start;
-}
-
-.paragraph-comment-2 {
-    justify-self: end;
-}
-
-
-
-/* --- SECCIÓN: Contenedores de Tarjetas (Main) --- */
-.container-two {
-    background:var(--gradient-banner);
-    width: auto;
-    height: 600px;
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-    justify-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap;
-}
-
-.card-container {
     background-color: var(--color-azul-claro);
-    display: flex;
-    flex-grow: 1;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    max-width: 350px;
-    width: 100%;
-    height: 500px;
-    padding: 20px;
-    margin: 30px;
-    border: 3px solid white;
+    padding: 1.2em;
     border-radius: 10px;
-    box-shadow: 8px 10px 0px black;
+    box-shadow: 0 13px 30px rgba(3, 6, 56, 0.1);
+    text-align: center; /* Centrado para móvil */
+    font-size: 0.95em;
+    color: var(--color-texto-oscuro);
+    line-height: 1.4;
+    width: auto;
 }
 
-.card-container > h2 {
-    text-align: center;
-}
+/* -------TARJETAS RECURSOS DE LA PAGINA--------- */
 
-.card-container > p {
-    text-align: center;
-}
 
-/* ----------ESTILOS FOOTER------------------- */
-
-footer{
+.container-two{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2em auto; 
+    gap: 2.5em;
+    padding: 2em 1em;
     width: 100%;
 }
-.footer-content{
-    background-color: #C4B42D;
-    height: 200px;
-    margin: 5px 0 0  0 ;
-    display: flex; 
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
-.footer-content > p{
-    flex-basis: 70%;
-    font-weight: normal;
-    font-size: 15px;
-    line-height: 1.8;
-    text-align: left;
-    margin-right: 20px;
+
+.card-container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1em;
+    width: 90%;
+    max-width: 400PX;
+    max-height: fit-content;
+    padding: 1.3rem;
+    background-color: var(--amarillo);
+    border-radius: 10px;
+    font-size: 0.95em;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
 }
 
-.social-icons{
-    flex-basis: 30%;
+.card-container>h2{
+    font-weight: bolder;
+    font-size: 1.7em;
+}
+
+.card-container> iframe{
+   border-radius: 5px;
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+}
+
+.card-container>p{
+    font-size: 0.95em;
+    font-weight: 700;
+}
+
+
+
+
+
+/* -----ESTILO FOOOTER------------- */
+
+
+.footer-content{
     display: flex;
-    gap: 15px;
-    justify-content: flex-end;
+    flex-direction: column;
+    background:var(--gradient-banner);
+    width: 100%;
+    font-weight: 600;
+    font-size: 0.95em;
+    padding: 1.5em 1em;
     align-items: center;
-    
+    gap: 1.5em;
+    color: var(--color-texto-oscuro);
+}
+.footer-content > p {
+    text-align: center;
+    max-width: 350px; 
+    line-height: 1.6; 
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center; 
+    align-items: center; 
+    padding-top: 1em; 
 }
 
 .social-icons a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    color: white;
-    font-size: 1.8em;
-    text-decoration: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    font-size: 2em; 
+    transition: color 0.3s ease; 
+}
+
+.social-whatsapp { color: var(--color-whatsapp); }
+.social-facebook { color: var(--color-facebook); }
+.social-instagram { color: var(--color-instagram); }
+
+.social-whatsapp:hover { color: #128C7E; }
+.social-facebook:hover { color: #3b5998;  }
+.social-instagram:hover { color: #C13584;  }
+
+footer {
+    margin-top: 3em; /* Espacio entre el main y el footer */
 }
 
 
@@ -386,13 +413,13 @@ body.high-contrast textarea {
 
 /* --- Contenedor Principal del Menú de Accesibilidad (Fijo) --- */
 .accessibility-menu-container {
-    position: fixed;
+   position: fixed;
     bottom: 30px; 
-    right: 30px;  
-    z-index: 1000;
+    right: 30px;
+    z-index: 2147483647; 
     display: flex;
     flex-direction: column; 
-    align-items: flex-end;  
+    align-items: flex-end; 
 }
 
 /* --- Botón Principal del Menú --- */
@@ -454,4 +481,454 @@ body.high-contrast textarea {
 
 .accessibility-options button:hover {
     background-color: #0056b3;
+}
+
+
+@media (min-width: 768px) {
+
+    /* --- HEADER y NAVEGACIÓN --- */
+     header {
+        background-color: var(--color-azul-claro);
+        padding: 15px 30px; /* Más padding para pantallas grandes */
+        width: 100%;
+        /* El header será el contenedor principal de Grid */
+        display: grid;
+        grid-template-columns: auto 1fr auto; /* Columna para logo, columna flexible para espacio, columna para search/nav */
+        grid-template-rows: auto auto; /* Dos filas: una para logo/search, otra para nav */
+        gap: 10px 20px; /* Espacio entre filas y columnas */
+        align-items: center; /* Centrar verticalmente los ítems en sus celdas de grid */
+    }
+
+    /* Ocultamos el .header-container porque el header ahora es el grid directamente */
+    .header-container {
+        display: contents; /* Hace que los hijos de .header-container se conviertan en ítems de grid directamente */
+    }
+
+    .logo {
+        grid-column: 1 / 2; /* El logo ocupa la primera columna */
+        grid-row: 1 / 2; /* Y la primera fila */
+        width: 180px; /* Ajusta el tamaño del logo para tablet/desktop */
+        margin-bottom: 0; /* Aseguramos que no tenga margen de móvil */
+    }
+
+    .search {
+        grid-column: 3 / 4; /* La barra de búsqueda ocupa la tercera columna */
+        grid-row: 1 / 2; /* Y la primera fila */
+        display: flex; /* Asegura que la barra de búsqueda esté visible */
+        width: auto;
+        max-width: 300px; /* Ajusta el ancho máximo de la barra de búsqueda */
+        margin-bottom: 0;
+    }
+
+    .menu-toggle {
+        display: none; /* Oculta el botón hamburguesa */
+    }
+
+    nav {
+        grid-column: 1 / span 3; /* El nav ocupa todas las 3 columnas */
+        grid-row: 2 / 3; /* Y la segunda fila */
+        display: flex !important; /* Muestra el nav */
+        flex-direction: row; /* Ítems del menú horizontalmente */
+        justify-content: center; /* Centra el menú horizontalmente en la segunda fila */
+        position: static;
+        width: auto;
+        height: auto;
+        background-color: transparent; /* Si quieres que el nav tenga el mismo color de fondo que el header */
+        top: auto;
+        left: auto;
+        transform: none;
+        padding: 0;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        max-height: none; 
+        overflow: visible; 
+        transition: none; 
+    }
+
+    .menu-nav {
+        flex-direction: row; 
+        padding: 0;
+    }
+
+    .menu-nav li { /* El LI de cada ítem de menú, incluyendo "Cursos" */
+        position: relative; 
+        margin-left: 25px;
+        border-bottom: none;
+    }
+
+    /* Dropdown para "Cursos" en Tablet/Desktop */
+    .dropdown-content {
+        display: none; 
+        position: absolute;
+        background-color: var(--color-fondo-desplegable);
+        min-width: 250px;
+        box-shadow: var(--sombra-desplegable);
+        z-index: 10; 
+        padding: 0;
+        margin: 0;
+        border-radius: 4px;
+        top: 100%; 
+        left: 0;
+        max-height: none;
+        overflow: visible; 
+        transition: none; 
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block; /* Muestra el dropdown al hacer hover en el LI padre */
+    }
+
+
+
+    /* --- CONTENEDOR DEL BANNER --- */
+  .container-baner {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Dos columnas para los elementos de la segunda fila */
+        grid-template-rows: auto auto auto; /* Tres filas: h1, (p + img), button */
+        gap: 25px; /* Espacio entre filas y columnas (ajusta según necesites) */
+        padding: 30px; /* Más padding para desktop */
+        background: var(--gradient-banner);
+        align-items: center; /* Centrar verticalmente en las celdas */
+        justify-items: center; 
+        text-align: center; 
+    }
+
+    /* Asumiendo que h1 es un hijo directo de .container-baner */
+    .container-baner > h1 {
+        grid-column: 1 / span 2; /* Ocupa las dos columnas */
+        grid-row: 1 / 2; /* En la primera fila */
+        font-size: 4.5em; /* Tamaño grande para el título */
+        margin-bottom: 0; /* El gap del grid maneja el espacio */
+    }
+
+    /* Asumiendo que p es un hijo directo de .container-baner */
+    .banner-text { /* Usa la clase si la agregas, o selecciona el p directamente */
+        grid-column: 1 / 2; /* Primera columna de la segunda fila */
+        grid-row: 2 / 3; /* Segunda fila */
+        font-size: 1.3em;
+        text-align: left; /* Alineación del texto del párrafo */
+        margin-top: 70px;
+        align-self: start; 
+        justify-self: end; 
+        max-width: 400px; /* Limita el ancho del párrafo para que no sea demasiado largo */
+    }
+
+    .content-img {
+        grid-column: 2 / 3; /* Segunda columna de la segunda fila */
+        grid-row: 2 / 3; /* Segunda fila, junto al párrafo */
+        max-width: 100%; /* Asegura que la imagen se ajuste a la celda */
+        text-align: center;
+    }
+
+    .content-img > img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 5px;
+        max-height: 350px; /* Limita la altura máxima de la imagen para que no sea muy grande */
+        object-fit: contain; /* Para que la imagen se ajuste sin cortarse */
+    }
+
+    .buton-unete {
+        grid-column: 1 / span 2; /* Ocupa las dos columnas */
+        grid-row: 3 / 4; /* En la tercera fila */
+        margin: 0 auto; /* Centrar horizontalmente */
+        width: 180px; /* Ajusta el tamaño del botón */
+        height: 50px;
+        font-size: 1.2em;
+    }
+
+    /* --- SECCIÓN COMENTARIOS --- */
+    .comment {
+        display: grid; /* Usar grid para tablet y superiores */
+        grid-template-columns: 1fr; /* Una sola columna para las secciones principales en tablet */
+        gap: 2em;
+        margin: 3em auto;
+        padding: 1em 2em;
+        max-width: 1000px; /* Ancho máximo para toda la sección de comentarios */
+    }
+
+    .text-comment {
+        grid-column: 1 / -1; /* Ocupa todas las columnas disponibles (que es 1 aquí) */
+        text-align: center;
+        font-size: 1.3em;
+        max-width: none; /* Eliminar restricción de ancho de móvil */
+        margin-bottom: 1em; /* Añadir algo de espacio debajo del título */
+    }
+
+    .second-section {
+        display: grid; /* Usar grid para los propios párrafos de comentarios */
+        grid-template-columns: 1fr 1fr; /* Dos columnas para comentarios en tablet */
+        gap: 1.5em;
+        width: 100%; /* Ocupar todo el ancho de su padre (.comment) */
+        max-width: none; /* Eliminar restricción de ancho de móvil */
+        margin: 0; /* Eliminar márgenes automáticos */
+    }
+
+    .paragraph-comment-1,
+    .paragraph-comment-2 {
+        text-align: left; /* Alinear texto a la izquierda en tablet */
+    }
+
+    .paragraph-comment-3 {
+        grid-column: 1 / -1; /* Ocupa dos columnas para el comentario individual */
+        text-align: center; /* Centrar si ocupa dos columnas */
+    }
+}
+
+/* --- MEDIA QUERY PARA ESCRITORIO (min-width: 1024px) --- */
+@media (min-width: 1024px) {
+    .comment {
+        grid-template-columns: 1fr; /* Todavía una sola columna conceptual para toda la sección */
+        gap: 3em;
+        margin: 5em auto;
+        padding: 2em 4em;
+        max-width: 1300px;
+    }
+
+    .text-comment {
+        font-size: 1.6em;
+        margin-bottom: 1.5em; /* Más espacio debajo del título */
+    }
+
+    .second-section {
+        grid-template-columns: repeat(3, 1fr); /* Tres columnas para comentarios en escritorio */
+        gap: 2em;
+    }
+
+    .paragraph-comment-1,
+    .paragraph-comment-2,
+    .paragraph-comment-3 {
+        /* Todos los comentarios ahora se comportan de manera similar en un diseño de 3 columnas */
+        text-align: left; /* Alinear texto a la izquierda */
+        font-size: 1.05em;
+        /* Restablecer grid-column/row específico si se estableció previamente por tablet */
+        grid-column: auto;
+        grid-row: auto;
+    }
+}
+
+    /* --- CONTENEDORES DE TARJETAS (MAIN) --- */
+    .container-two {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 2.5em;
+        padding: 3em 2em;
+        height: auto;
+        max-width: 1200px; /* Ancho máximo para el contenedor de tarjetas */
+    }
+
+    .card-container {
+        max-width: 360px; /* Más ancho para las tarjetas en tablet */
+        height: auto;
+        margin: 0; /* Quitamos el margen si el gap lo maneja */
+        padding: 1.5rem;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* --- FOOTER --- */
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5em 3em; /* Más padding horizontal para tablet */
+        height: auto; /* O un fixed height si lo quieres */
+    }
+
+    .footer-content > p {
+        flex-basis: 70%; /* El párrafo ocupa más espacio */
+        text-align: left;
+        max-width: none;
+    }
+
+    .social-icons {
+        flex-basis: 25%; /* Los iconos ocupan menos espacio */
+        padding-top: 0;
+    }
+
+
+
+
+
+/* --- MEDIA QUERY PARA ESCRITORIO --- */
+@media (min-width: 1024px) {
+
+   
+    body {
+        font-size: 1.1em; 
+    }
+
+    header {
+        padding: 20px 50px; /* Más padding para el header */
+        gap: 15px 40px; /* Ajusta el espacio entre elementos del header */
+    }
+
+    .logo {
+        width: 200px; /* Logo más grande */
+    }
+
+    .search {
+        max-width: 420px; 
+        width: 400px;/* Barra de búsqueda más ancha */
+    }
+
+    
+    .menu-nav li {
+        margin-left: 35px; /* Más espacio entre ítems del menú */
+    }
+
+    /* --- CONTENEDOR DEL BANNER (Bienvenido) --- */
+    .container-baner {
+        padding: 80px 100px; /* Más padding para el banner */
+        gap: 30px 50px; /* Más espacio entre elementos del banner */
+    }
+
+    .container-baner > h1 {
+        font-size: 5.5em; /* Título más grande */
+    }
+
+    .container-baner > p.banner-text {
+        font-size: 1.6em; /* Párrafo más grande */
+        max-width: 500px; /* Permite que el párrafo se extienda más */
+    }
+
+    .content-img > img {
+        max-height: 450px; /* Imagen más grande */
+    }
+
+    .buton-unete {
+        width: 200px;
+        height: 55px;
+        font-size: 1.3em;
+    }
+
+
+    /* --- SECCIÓN COMENTARIOS --- */
+    .comment {
+        grid-template-columns: 1fr; /* Todavía una sola columna conceptual para toda la sección */
+        gap: 3em;
+        margin: 5em auto;
+        padding: 2em 4em;
+        max-width: 1300px; /* Ya es un ancho considerable */
+    }
+
+    .text-comment {
+        font-size: 1.6em;
+        margin-bottom: 1.5em; /* Más espacio debajo del título */
+    }
+
+    .second-section {
+        grid-template-columns: repeat(3, 1fr); /* Tres columnas para comentarios en escritorio */
+        gap: 2em;
+    }
+
+    .paragraph-comment-1,
+    .paragraph-comment-2,
+    .paragraph-comment-3 {
+        text-align: left; /* Alinear texto a la izquierda */
+        font-size: 1.05em;
+        grid-column: auto; /* Asegura que no haya un span forzado */
+        grid-row: auto;    /* Asegura que no haya un span forzado */
+    }
+}
+
+    /* --- CONTENEDORES DE TARJETAS (MAIN) --- */
+    .container-two {
+        /* Podrías pasar a 3 columnas para tarjetas aquí si lo deseas */
+        /* grid-template-columns: repeat(3, 1fr); */
+        gap: 3em;
+        padding: 4em 3em;
+    }
+
+    .card-container {
+        max-width: 380px; /* Ajusta el ancho para que quepan 3 o más en una fila */
+        padding: 1.8rem;
+    }
+
+    /* --- FOOTER --- */
+    .footer-content {
+        padding: 2em 5em;
+    }
+
+    .footer-content > p {
+        flex-basis: 75%; /* El párrafo ocupa más espacio */
+    }
+
+    .social-icons {
+        flex-basis: 20%; /* Los iconos ocupan menos espacio */
+    }
+
+@media (min-width: 1440px) {
+
+ .container-baner {
+        background: var(--gradient-banner);
+        height: auto;
+        min-height: 480px;
+        display: flex; /* Vuelve a flexbox para la disposición principal */
+        flex-direction: row; /* Contenido y imagen lado a lado */
+        justify-content: center; /* Centrar todo el contenido */
+        align-items: center; /* Centrar verticalmente */
+        gap: 50px; /* Espacio entre el texto y la imagen */
+        padding: 50px 80px;
+    }
+
+    .info-container {
+        display: flex;
+        flex-direction: column; /* H1, P, Botón apilados */
+        gap: 20px;
+        align-items: center; /* Centrar horizontalmente su propio contenido */
+        text-align: center; /* Centrar el texto */
+        flex: 1; /* Permitir que ocupe espacio, pero la imagen también tendrá su propio espacio */
+        max-width: 600px;
+    }
+
+    .info-container h1 { /* Selector específico */
+        font-weight: bold;
+        font-size: 4.5em;
+        margin-bottom: 0;
+        line-height: 1.1;
+    }
+
+    .info-container p { /* Selector específico */
+        font-weight: bolder;
+        font-size: 1.8em;
+        margin-bottom: 0;
+        line-height: 1.3;
+    }
+
+    .buton-unete {
+        background-color: var(--amarillo);
+        color: var(--color-texto-oscuro);
+        width: 150px;
+        height: 45px;
+        border-radius: 10px;
+        font-size: 1.1em;
+        margin: 0;
+    }
+
+    .buton-unete:hover {
+        opacity: 0.9;
+        background-color: var(--amarillo);
+    }
+
+    .content-img {
+        max-width: 500px;
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1; /* Permitir que ocupe espacio */
+    }
+
+    .content-img img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    
 }

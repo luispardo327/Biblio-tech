@@ -12,44 +12,45 @@
         <title>Biblio-tech</title>
     </head>
     <body>
-       <header>
-    <div class="logo">
-        <a href="index.html"><img src="./img/LogoWeb.svg" alt="logo Biblio-tech"></a>
-    </div>
-    <div class="search">
-        <input type="text" placeholder="search......" name="Search">
-        <button type="submit"><i>🔍</i></button>
-    </div>
-    <nav>
-        <ul class="menu-nav">
-            <li><a href="index.html">Inicio</a></li>
-            <li class="dropdown"> <a href="#" class="dropbtn">Cursos</a> 
-            <ul class="dropdown-content"> 
-            <li><a href="#"> Libros electronicos</a></li>
-            <li><a href="#"> Bases de datos</a></li>
-            <li><a href="#">Estrategias de busquedas de información</a></li>
-            <li><a href="#">Tesauros</a></li>
-            <li><a href="#">Operadores boleanos</a></li>
+      <header>
+        <div class="header-container"> <div class="logo">
+                <a href="index.html"><img src="./img/LogoWeb.svg" alt="logo Biblio-tech"></a>
+            </div>
+            <div class="search">
+                <input type="text" placeholder="Buscar...">
+            </div>
+            <button id="menu-toggle" class="menu-toggle">
+                <i class="fas fa-bars"></i> 
+            </button>
+            <nav>
+                <ul id="main-menu" class="menu-nav">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li class="dropdown"> 
+                        <a href="#" class="dropbtn">Cursos</a> 
+                        <ul class="dropdown-content"> 
+                            <li><a href="#">Libros electronicos</a></li>
+                            <li><a href="#">Bases de datos</a></li>
+                            <li><a href="#">Estrategias de busquedas de información</a></li>
+                            <li><a href="#">Tesauros</a></li>
+                            <li><a href="#">Operadores boleanos</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">¿Quiénes somos?</a></li>
                 </ul>
-            </li>
-            <li><a href="#">¿Quiénes somos?</a></li>
-        </ul>
-    </nav>
-</header>
+            </nav>
+        </div>
+    </header>
 
         <section>
-            <div class="container-baner">
-            <div class="info-container">
-                <h1>Bienvenido </h1><br>
-            <p>conoce los recursos de tu <br> biblioteca</p>
-            <button class="buton-unete"><a href="#"></a>únete ahora</button>
-
-            </div>
-            <div class="content-img">
-                <img src="img/imgRecursos.jpeg" alt="imagen descriptiva de personas ingresando a la biblioteca">
-            </div>
-        </div>
-        </section>
+    <div class="container-baner">
+    <h1>Bienvenido</h1>
+    <p class="banner-text">conoce los recursos de tu biblioteca<p>
+    <div class="content-img">
+        <img src="img/imgRecursos.jpeg" alt="Imagen de banner">
+    </div>
+    <button class="buton-unete">Únete ahora</button>
+</div>
+</section>
 
         <section class="comment">
             <p class="text-comment">📊 Bibliotech en números <br> 🔍 +2.500 estudiantes capacitados <br> 📚 50+ recursos digitales disponibles <br>📅 Acceso 24/7 desde cualquier lugar</p>
@@ -77,17 +78,18 @@
             </div>
         </main>
 
-       <footer class="footer">
-    <div class="footer-content"> <p>
-            Plataforma educativa <br>
+       <footer>
+        <div class="footer-content"> 
+            <p>Plataforma educativa <br>
             &copy; 2025 Bibliotech – Todos los derechos reservados <br>
             Dirección: Calle 123 #45-67, Biblioteca Central, Ciudad Universitaria <br>
             Correo: info@bibliotech.edu.co <br> Teléfono: (+57) 123 456 7890 <br>
             Horario de atención: Lunes a viernes de 8:00 a.m. a 6:00 p.m.
         </p>
-        <div class="social-icons"> <a href="#" target="_blank" aria-label="WhatsApp de Bibliotech"><i class="fab fa-whatsapp"></i></a>
-            <a href="#" target="_blank" aria-label="Facebook de Bibliotech"><i class="fab fa-facebook"></i></a>
-            <a href="#" target="_blank" aria-label="Instagram de Bibliotech"><i class="fab fa-instagram"></i></a>
+        <div class="social-icons"> 
+            <a class="social-whatsapp"  href="#" target="_blank" aria-label="WhatsApp de Bibliotech"><i class="fab fa-whatsapp"></i></a>
+            <a class="social-facebook" href="#" target="_blank" aria-label="Facebook de Bibliotech"><i class="fab fa-facebook"></i></a>
+            <a class="social-instagram" href="#" target="_blank" aria-label="Instagram de Bibliotech"><i class="fab fa-instagram"></i></a>
         </div>
     </div>
 </footer>
