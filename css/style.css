@@ -28,6 +28,11 @@
 body {
     line-height: 1.6;
 }
+.banner-new{
+    background: var(--gradient-banner);
+    padding: 20px;
+}
+
 
 
 .header-container {
@@ -49,6 +54,9 @@ header {
     width: 150px;
     height: auto;
     margin-bottom: 10px;
+}
+.logo-desktop{
+    display: none;
 }
 
 /* --- Campo de Búsqueda Visible (en móvil y desktop) --- */
@@ -359,6 +367,60 @@ footer {
 }
 
 
+/* -----seccion de cursos  ---- */
+/* -----De la pagina de cursos------- */
+
+.container-baner-courses{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url(../img/img.svg) no-repeat center center / cover;
+    height: 320px;
+    color: white;
+    text-align: center;
+    justify-content: center;
+}
+
+.banner-text-courses{
+    font-size: 10.5px;
+}
+
+.courses-section{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    gap: 20px; 
+    padding: 20px;
+}
+
+.recursos-web{
+    background-color: #B3BE4A;
+    padding: 20px;
+    width: 90%;
+    max-width: 375px; 
+    height: 390px;
+    box-shadow: 14px 10px 0px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+.recursos-web img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px 8px 0 0;
+}
+.recursos-web p{
+    padding: 10px;
+}   
+ .recursos-web a:visited{
+        color: white;
+    }
+
+
 
 /* ------BOTTON ACCESIILIDAD- -------- */
 
@@ -485,6 +547,17 @@ body.high-contrast textarea {
 
 
 @media (min-width: 768px) {
+    .logo {
+        display: none; 
+    }
+    
+    .logo-desktop {
+        display: inline-block;
+        grid-column: 1 / 2; 
+        grid-row: 1 / 2;
+        width: 180px;
+        margin-bottom: 0;
+    }
 
     /* --- HEADER y NAVEGACIÓN --- */
      header {
@@ -675,88 +748,28 @@ body.high-contrast textarea {
         grid-column: 1 / -1; /* Ocupa dos columnas para el comentario individual */
         text-align: center; /* Centrar si ocupa dos columnas */
     }
+
+
+    /* -----seccion de cursos  ---- */
+/* -----De la pagina de cursos------- */
+ /* Sección de Cursos: Diseño de dos columnas */
+    .courses-section {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px; 
+        padding: 40px;
+    }
+
+    .recursos-web {
+        width: calc(50% - 15px);
+    }
+
 }
 
 /* --- MEDIA QUERY PARA ESCRITORIO (min-width: 1024px) --- */
 @media (min-width: 1024px) {
-    .comment {
-        grid-template-columns: 1fr; /* Todavía una sola columna conceptual para toda la sección */
-        gap: 3em;
-        margin: 5em auto;
-        padding: 2em 4em;
-        max-width: 1300px;
-    }
-
-    .text-comment {
-        font-size: 1.6em;
-        margin-bottom: 1.5em; /* Más espacio debajo del título */
-    }
-
-    .second-section {
-        grid-template-columns: repeat(3, 1fr); /* Tres columnas para comentarios en escritorio */
-        gap: 2em;
-    }
-
-    .paragraph-comment-1,
-    .paragraph-comment-2,
-    .paragraph-comment-3 {
-        /* Todos los comentarios ahora se comportan de manera similar en un diseño de 3 columnas */
-        text-align: left; /* Alinear texto a la izquierda */
-        font-size: 1.05em;
-        /* Restablecer grid-column/row específico si se estableció previamente por tablet */
-        grid-column: auto;
-        grid-row: auto;
-    }
-}
-
-    /* --- CONTENEDORES DE TARJETAS (MAIN) --- */
-    .container-two {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 2.5em;
-        padding: 3em 2em;
-        height: auto;
-        max-width: 1200px; /* Ancho máximo para el contenedor de tarjetas */
-    }
-
-    .card-container {
-        max-width: 360px; /* Más ancho para las tarjetas en tablet */
-        height: auto;
-        margin: 0; /* Quitamos el margen si el gap lo maneja */
-        padding: 1.5rem;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    /* --- FOOTER --- */
-    .footer-content {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1.5em 3em; /* Más padding horizontal para tablet */
-        height: auto; /* O un fixed height si lo quieres */
-    }
-
-    .footer-content > p {
-        flex-basis: 70%; /* El párrafo ocupa más espacio */
-        text-align: left;
-        max-width: none;
-    }
-
-    .social-icons {
-        flex-basis: 25%; /* Los iconos ocupan menos espacio */
-        padding-top: 0;
-    }
-
-
-
-
-
-/* --- MEDIA QUERY PARA ESCRITORIO --- */
-@media (min-width: 1024px) {
-
-   
+       
     body {
         font-size: 1.1em; 
     }
@@ -804,15 +817,13 @@ body.high-contrast textarea {
         height: 55px;
         font-size: 1.3em;
     }
-
-
-    /* --- SECCIÓN COMENTARIOS --- */
+/* ---------------------------- */
     .comment {
         grid-template-columns: 1fr; /* Todavía una sola columna conceptual para toda la sección */
         gap: 3em;
         margin: 5em auto;
         padding: 2em 4em;
-        max-width: 1300px; /* Ya es un ancho considerable */
+        max-width: 1300px;
     }
 
     .text-comment {
@@ -828,38 +839,81 @@ body.high-contrast textarea {
     .paragraph-comment-1,
     .paragraph-comment-2,
     .paragraph-comment-3 {
+        /* Todos los comentarios ahora se comportan de manera similar en un diseño de 3 columnas */
         text-align: left; /* Alinear texto a la izquierda */
         font-size: 1.05em;
-        grid-column: auto; /* Asegura que no haya un span forzado */
-        grid-row: auto;    /* Asegura que no haya un span forzado */
+        /* Restablecer grid-column/row específico si se estableció previamente por tablet */
+        grid-column: auto;
+        grid-row: auto;
     }
-}
 
-    /* --- CONTENEDORES DE TARJETAS (MAIN) --- */
+        /* --- CONTENEDORES DE TARJETAS (MAIN) --- */
     .container-two {
-        /* Podrías pasar a 3 columnas para tarjetas aquí si lo deseas */
-        /* grid-template-columns: repeat(3, 1fr); */
-        gap: 3em;
-        padding: 4em 3em;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 2.5em;
+        padding: 3em 2em;
+        height: auto;
+        max-width: 1200px; /* Ancho máximo para el contenedor de tarjetas */
     }
 
     .card-container {
-        max-width: 380px; /* Ajusta el ancho para que quepan 3 o más en una fila */
-        padding: 1.8rem;
+        max-width: 360px; /* Más ancho para las tarjetas en tablet */
+        height: auto;
+        margin: 0; /* Quitamos el margen si el gap lo maneja */
+        padding: 1.5rem;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
     }
+/* -----De la pagina de cursos------- */
+
+.container-baner-courses {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    background: url(../img/img.svg) no-repeat center center / cover;
+    width: 100%;
+    height: 500px;
+    color: white;
+    text-align: center; 
+}
+.courses-section {
+        gap: 40px;
+        max-width: 1200px;
+    }
+
+    .recursos-web {
+        width: calc(50% - 20px);
+        height: 440px;
+    }
+
+
 
     /* --- FOOTER --- */
     .footer-content {
-        padding: 2em 5em;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5em 3em; /* Más padding horizontal para tablet */
+        height: auto; /* O un fixed height si lo quieres */
     }
 
     .footer-content > p {
-        flex-basis: 75%; /* El párrafo ocupa más espacio */
+        flex-basis: 70%; /* El párrafo ocupa más espacio */
+        text-align: left;
+        max-width: none;
     }
 
     .social-icons {
-        flex-basis: 20%; /* Los iconos ocupan menos espacio */
+        flex-basis: 25%; /* Los iconos ocupan menos espacio */
+        padding-top: 0;
     }
+
+
+}
+
 
 @media (min-width: 1440px) {
 

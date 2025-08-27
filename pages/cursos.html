@@ -1,0 +1,127 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" sizes="32x32" href="./img/libro-digital.png">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <title>Cursos</title>
+    </head>
+    <body>
+        <div class="banner-new"></div>
+      <header>
+        <div class="header-container">
+        <div class="logo">
+            <a href="../index.html">
+                <img src="../img/Logo web movil.svg" alt="logo Biblio-tech">
+            </a>
+        </div>
+        
+        <div class="logo-desktop">
+            <a href="../index.htm">
+                <img src="../img/LogoWeb.svg" alt="logo Biblio-tech-desktop">
+            </a>
+        </div>
+            <div class="search">
+                <input type="text" placeholder="Buscar...">
+            </div>
+            <button id="menu-toggle" class="menu-toggle">
+                <i class="fas fa-bars"></i> 
+            </button>
+            <nav>
+                <ul id="main-menu" class="menu-nav">
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li class="dropdown"> 
+                        <a href="#" class="dropbtn">Cursos</a> 
+                        <ul class="dropdown-content"> 
+                            <li><a href="#">Libros electronicos</a></li>
+                            <li><a href="#">Bases de datos</a></li>
+                            <li><a href="#">Estrategias de busquedas de información</a></li>
+                            <li><a href="#">Tesauros</a></li>
+                            <li><a href="#">Operadores boleanos</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">¿Quiénes somos?</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <main>
+        <section class="content-page-courses">
+    <div class="container-baner-courses">
+    
+    <p class="banner-text-courses">En esta sección encontrarás cursos prácticos sobre libros electrónicos, bases de datos, estrategias de búsqueda y tesauros. Cada curso incluye tres videos diseñados para que desarrolles habilidades que potencien tu aprendizaje y optimicen el uso de los recursos de la biblioteca.<p>
+</div>
+</section>
+
+ <section class="courses-section">
+                
+                <article class="recursos-web">
+                    <a href="../index.html">
+                    <p>Libros Electrónicos</p>
+                   <img src="../img/librosElectronicos.png" alt="imagen libros electronicos">
+                   </a>
+                </article>
+
+                <article class="recursos-web">
+                    <p>Bases de datos</p>
+                   <img src="../img/baseDeDatos.png" alt="imagen base de datos">
+                </article>
+
+                <article class="recursos-web">
+                    <p>Estrategias de búsqueda de información</p>
+                   <img src="../img/estrategiasDeBusqueda.png" alt="imagen Estrategias de busquedas">
+                </article>
+
+                <article class="recursos-web">
+                    <p>Tesauros</p>
+                   <img src="../img/tesauros.png" alt="imagen Tesauros">
+                </article>
+                
+                
+               
+        </section>
+
+
+        
+    <section class="comment">
+            <p class="text-comment">📊 Bibliotech en números <br> 🔍 +2.500 estudiantes capacitados  📚 50+ recursos digitales disponibles 📅 Acceso 24/7 desde cualquier lugar</p>
+    </section>
+    </main>
+
+    
+       <footer>
+        <div class="footer-content"> 
+            <p>Plataforma educativa <br>
+            &copy; 2025 Bibliotech – Todos los derechos reservados <br>
+            Dirección: Calle 123 #45-67, Biblioteca Central, Ciudad Universitaria <br>
+            Correo: info@bibliotech.edu.co <br> Teléfono: (+57) 123 456 7890 <br>
+            Horario de atención: Lunes a viernes de 8:00 a.m. a 6:00 p.m.
+        </p>
+        <div class="social-icons"> 
+            <a class="social-whatsapp"  href="#" target="_blank" aria-label="WhatsApp de Bibliotech"><i class="fab fa-whatsapp"></i></a>
+            <a class="social-facebook" href="#" target="_blank" aria-label="Facebook de Bibliotech"><i class="fab fa-facebook"></i></a>
+            <a class="social-instagram" href="#" target="_blank" aria-label="Instagram de Bibliotech"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+</footer>
+            <div class="accessibility-menu-container">
+        <button id="main-accessibility-button" class="main-accessibility-button">
+            <span class="icon">♿</span> </button>
+
+        <div id="accessibility-options" class="accessibility-options hidden">
+            <button id="btn-aumentar-fuente">A+</button>
+            <button id="btn-disminuir-fuente">A-</button>
+            <button id="btn-alto-contraste">Alto Contraste</button>
+            <button id="btn-restablecer">Restablecer</button>
+        </div>
+    </div>
+    <script src="../js/main.js"></script>
+    </body>
+    </html>
