@@ -422,6 +422,44 @@ footer {
 
 
 
+
+    /* ------De la pagina de LIBROS ELECTRONICOS---------- */
+
+.main-courses{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.video-card{
+    background-color:rgb(179 190 74 / 32%);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 375px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.video-card video{
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+}
+.video-card p{
+    font-weight: bolder;
+    color: rgb(186, 204, 24);
+    text-align: center;
+    padding:10px 0 ;
+}
+    
+
 /* ------BOTTON ACCESIILIDAD- -------- */
 
 /* --- Clases para Accesibilidad: Tamaño de Fuente --- */
@@ -752,7 +790,15 @@ body.high-contrast textarea {
 
     /* -----seccion de cursos  ---- */
 /* -----De la pagina de cursos------- */
+
+.container-baner-courses{
+
+}
+.banner-text-courses{
+    font-size: 18px;
+}
  /* Sección de Cursos: Diseño de dos columnas */
+
     .courses-section {
         flex-direction: row;
         flex-wrap: wrap;
@@ -763,6 +809,24 @@ body.high-contrast textarea {
 
     .recursos-web {
         width: calc(50% - 15px);
+    }
+
+
+
+
+     /* ------De la pagina de LIBROS ELECTRONICOS---------- */
+
+     .main-courses {
+        flex-direction: row; /* Ahora los videos se colocan en fila */
+        flex-wrap: wrap; /* Permite que los videos salten a la siguiente fila si no hay espacio */
+        justify-content: center; /* Centra los videos en la fila */
+        padding: 20px;
+        gap: 20px; /* Aumenta el espacio entre videos */
+    }
+
+    .video-card {
+        width: calc(33.33% - 20px); /* Establece un ancho para 3 columnas */
+        max-width: 350px;
     }
 
 }
@@ -866,29 +930,6 @@ body.high-contrast textarea {
         padding: 1.5rem;
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
     }
-/* -----De la pagina de cursos------- */
-
-.container-baner-courses {
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
-    background: url(../img/img.svg) no-repeat center center / cover;
-    width: 100%;
-    height: 500px;
-    color: white;
-    text-align: center; 
-}
-.courses-section {
-        gap: 40px;
-        max-width: 1200px;
-    }
-
-    .recursos-web {
-        width: calc(50% - 20px);
-        height: 440px;
-    }
-
 
 
     /* --- FOOTER --- */
@@ -912,8 +953,61 @@ body.high-contrast textarea {
     }
 
 
+    /* -----De la pagina de cursos------- */
+
+.container-baner-courses {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    background: url(../img/img.svg) no-repeat center center / cover;
+    width: 100%;
+    height: 500px;
+    color: white;
+    text-align: center; 
+    gap: 10px;
+}
+.courses-section {
+        gap: 80px;
+        max-width: 1200px;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .recursos-web {
+        width: calc(50% - 20px);
+        height: 440px;
+    }
+
+
+      /* ------De la pagina de LIBROS ELECTRONICOS---------- */
+
+.main-courses{
+    display: flex;
+    flex-direction: column;
 }
 
+.video-card{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    width:100%;
+    max-width: 1024px;
+}
+.video-card video {
+    
+    width: 40%;
+    height: auto;
+    aspect-ratio: 16 / 9; 
+}
+
+.video-card p {
+    width: 60%;
+    text-align: left;
+}
+
+}
 
 @media (min-width: 1440px) {
 
