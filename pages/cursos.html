@@ -13,43 +13,9 @@
     </head>
     <body>
         <div class="banner-new"></div>
-      <header>
-        <div class="header-container">
-        <div class="logo">
-            <a href="../index.html">
-                <img src="../img/LogoWebMovil.svg" alt="logo Biblio-tech">
-            </a>
-        </div>
-        
-        <div class="logo-desktop">
-            <a href="../index.htm">
-                <img src="../img/LogoWeb.svg" alt="logo Biblio-tech-desktop">
-            </a>
-        </div>
-            <div class="search">
-                <input type="text" placeholder="Buscar...">
-            </div>
-            <button id="menu-toggle" class="menu-toggle">
-                <i class="fas fa-bars"></i> 
-            </button>
-            <nav>
-                <ul id="main-menu" class="menu-nav">
-                    <li><a href="../index.html">Inicio</a></li>
-                    <li class="dropdown"> 
-                        <a href="#" class="dropbtn">Cursos</a> 
-                        <ul class="dropdown-content"> 
-                            <li><a href="../pages/librosElectronicos.html">Libros electronicos</a></li>
-                            <li><a href="#">Bases de datos</a></li>
-                            <li><a href="#">Estrategias de busquedas de información</a></li>
-                            <li><a href="#">Tesauros</a></li>
-                            <li><a href="#">Operadores boleanos</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">¿Quiénes somos?</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+         <!-- contenedor para inyeccion con js nuevas practicas -->
+     <div id="header-container"></div>
+     
 
 
     <main>
@@ -96,21 +62,8 @@
     </main>
 
     
-       <footer>
-        <div class="footer-content"> 
-            <p>Plataforma educativa <br>
-            &copy; 2025 Bibliotech – Todos los derechos reservados <br>
-            Dirección: Calle 123 #45-67, Biblioteca Central, Ciudad Universitaria <br>
-            Correo: info@bibliotech.edu.co <br> Teléfono: (+57) 123 456 7890 <br>
-            Horario de atención: Lunes a viernes de 8:00 a.m. a 6:00 p.m.
-        </p>
-        <div class="social-icons"> 
-            <a class="social-whatsapp"  href="#" target="_blank" aria-label="WhatsApp de Bibliotech"><i class="fab fa-whatsapp"></i></a>
-            <a class="social-facebook" href="#" target="_blank" aria-label="Facebook de Bibliotech"><i class="fab fa-facebook"></i></a>
-            <a class="social-instagram" href="#" target="_blank" aria-label="Instagram de Bibliotech"><i class="fab fa-instagram"></i></a>
-        </div>
-    </div>
-</footer>
+               <!-- contenedor para inyeccion de js nuevas practicas -->
+                <div id="footer-container"></div>
             <div class="accessibility-menu-container">
         <button id="main-accessibility-button" class="main-accessibility-button">
             <span class="icon">♿</span> </button>
@@ -122,6 +75,7 @@
             <button id="btn-restablecer">Restablecer</button>
         </div>
     </div>
+    <script src="./js/componentLoader.js"></script>
     <script src="../js/main.js"></script>
     </body>
     </html>
