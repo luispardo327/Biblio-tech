@@ -297,6 +297,12 @@ nav.active {
     border-radius: 10px;
     font-size: 0.95em;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-container:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
 
 .card-container>h2{
@@ -305,10 +311,11 @@ nav.active {
 }
 
 .card-container> iframe{
-   border-radius: 5px;
     width: 100%;
-    height: auto;
-    min-height: 200px;
+    aspect-ratio: 16 / 9;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 1rem;
 }
 
 .card-container>p{
@@ -374,7 +381,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: url(../img/img.svg) no-repeat center center / cover;
+    background: url(../img/img.webp) no-repeat center center / cover;
     height: 320px;
     color: white;
     text-align: center;
@@ -791,9 +798,7 @@ body.high-contrast textarea {
     /* -----seccion de cursos  ---- */
 /* -----De la pagina de cursos------- */
 
-.container-baner-courses{
 
-}
 .banner-text-courses{
     font-size: 18px;
 }
@@ -916,7 +921,7 @@ body.high-contrast textarea {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-        align-items: flex-start;
+        align-items: stretch;
         gap: 2.5em;
         padding: 3em 2em;
         height: auto;
@@ -924,11 +929,9 @@ body.high-contrast textarea {
     }
 
     .card-container {
-        max-width: 360px; /* Más ancho para las tarjetas en tablet */
-        height: auto;
-        margin: 0; /* Quitamos el margen si el gap lo maneja */
-        padding: 1.5rem;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    flex: 1 1 360px; /* Se ajusta automáticamente */
+    height: auto;
+    max-width: 360px;
     }
 
 
