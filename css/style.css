@@ -101,15 +101,16 @@ header {
 
 /* --- NAVEGACIÓN PRINCIPAL (el contenedor <nav>) --- */
 nav {
-    width: 100%; 
-    max-height: 0; 
-    overflow: hidden; /* Oculta el contenido extra */
-    transition: max-height 0.3s ease-out; 
-    background-color: var(--color-azul-claro); }
-
+  width: 100%; 
+  max-height: 0; 
+  overflow: hidden; /* Oculta cuando está cerrado */
+  transition: max-height 0.3s ease-out; 
+  background-color: var(--color-azul-claro);
+}
 
 nav.active { 
-    max-height: 500px; 
+  max-height: 1000px;  /* más espacio para dropdowns */
+  overflow: visible;   /* <-- evita que recorte el submenú */
 }
 
 
@@ -138,32 +139,47 @@ nav.active {
     display: block; /* Para que el padding y click área sean correctos */
 }
 
-.dropdown-content {
-    position: static; 
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 0;
-    margin: 0;
-    display: none; /* Oculto por defecto */
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
+
+/* === MENÚ DESPLEGABLE ADAPTATIVO === */
+.dropdown {
+  position: relative;
 }
 
+.dropdown-content {
+  position: static; /* En móvil: se comporta como parte del flujo */
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  overflow: hidden;
+  max-height: 0;               
+  opacity: 0;                  
+  visibility: hidden;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
+  border-radius: 0 0 8px 8px;
+  box-shadow: none;
+  z-index: 2000;
+}
 
 .dropdown.active .dropdown-content {
-    display: block;
-    max-height: 300px; }
-
-.dropdown-content li a {
-    padding: 10px 30px;
-    text-align: center;
-    font-size: 0.95em;
-    background-color: var(--color-fondo-desplegable);
-    color: var(--color-texto-oscuro);
-    display: block;
+  max-height: 600px;  
+  opacity: 1;
+  visibility: visible;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
+/* Estilo de los enlaces dentro del submenú */
+.dropdown-content li a {
+  display: block;
+  padding: 12px 18px;
+  text-align: left;
+  background-color: var(--color-fondo-desplegable);
+  color: var(--color-texto-oscuro);
+  transition: background-color 0.3s;
+}
+
+.dropdown-content li a:hover {
+  background-color: var(--color-hover-enlace);
+  color: #fff;
+}
 
 /* -------CONTAINER BANER (Bienvenido)-----------  */
 
@@ -377,15 +393,24 @@ footer {
 /* -----seccion de cursos  ---- */
 /* -----De la pagina de cursos------- */
 
-.container-baner-courses{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: url(/img/img.webp) no-repeat center center / cover;
-    height: 320px;
-    color: white;
-    text-align: center;
-    justify-content: center;
+.container-baner-courses {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* Fondo */
+  background-image: url(../img/img.webp);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  /* Dimensiones y color */
+  min-height: 320px;
+  width: 100%;
+  color: white;
+  text-align: center;
+  padding: 2em 1em;
 }
 
 .banner-text-courses{
@@ -675,27 +700,28 @@ body.high-contrast textarea {
         border-bottom: none;
     }
 
-    /* Dropdown para "Cursos" en Tablet/Desktop */
-    .dropdown-content {
-        display: none; 
-        position: absolute;
-        background-color: var(--color-fondo-desplegable);
-        min-width: 250px;
-        box-shadow: var(--sombra-desplegable);
-        z-index: 10; 
-        padding: 0;
-        margin: 0;
-        border-radius: 4px;
-        top: 100%; 
-        left: 0;
-        max-height: none;
-        overflow: visible; 
-        transition: none; 
-    }
+    /* Dropdown solo en desktop */
+.dropdown-content {
+  display: none; 
+  position: absolute;
+  background-color: var(--color-fondo-desplegable);
+  min-width: 250px;
+  box-shadow: var(--sombra-desplegable);
+  border-radius: 4px;
+  top: 100%; 
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(5px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
 
-    .dropdown:hover .dropdown-content {
-        display: block; /* Muestra el dropdown al hacer hover en el LI padre */
-    }
+.dropdown:hover .dropdown-content {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
 
 
 
@@ -821,6 +847,21 @@ body.high-contrast textarea {
 
      /* ------De la pagina de LIBROS ELECTRONICOS---------- */
 
+/* -----en la seccion de banner-------- */
+     .container-baner-courses {
+    min-height: 220px;
+    background-size: cover;
+    background-position: center;
+    padding: 1.5em 1em;
+  }
+
+  .container-baner-courses h2 {
+    font-size: 1.3em;
+  }
+
+  .container-baner-courses p {
+    font-size: 0.9em;
+  }
      .main-courses {
         flex-direction: row; /* Ahora los videos se colocan en fila */
         flex-wrap: wrap; /* Permite que los videos salten a la siguiente fila si no hay espacio */
@@ -963,7 +1004,7 @@ body.high-contrast textarea {
     flex-direction: column; 
     justify-content: center; 
     align-items: center; 
-    background: url(../img/img.svg) no-repeat center center / cover;
+    background: url(../img/img.webp) no-repeat center center / cover;
     width: 100%;
     height: 500px;
     color: white;

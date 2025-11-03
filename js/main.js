@@ -23,16 +23,23 @@ document.addEventListener("headerLoaded", () => {
     });
   }
 
-  // ---- 2. Dropdown “Cursos” ----
-  const dropdownToggle = document.querySelector(".dropdown .dropbtn");
+// ---- 2. Dropdown “Cursos” con animación ----
+const dropdownToggle = document.querySelector(".dropdown .dropbtn");
 
-  if (dropdownToggle) {
-    dropdownToggle.addEventListener("click", (e) => {
+if (dropdownToggle) {
+  dropdownToggle.addEventListener("click", (e) => {
+    const parentDropdownLi = dropdownToggle.parentElement;
+
+    // Si no está activo → lo abrimos sin navegar
+    if (!parentDropdownLi.classList.contains("active")) {
       e.preventDefault();
-      const parentDropdownLi = dropdownToggle.parentElement;
-      parentDropdownLi.classList.toggle("active");
-    });
-  }
+      parentDropdownLi.classList.add("active");
+    } else {
+      // Si ya está activo → lo cerramos y permitimos la navegación
+      parentDropdownLi.classList.remove("active");
+    }
+  });
+}
 
   // ---- 3. Menú de accesibilidad ----
   const mainAccessibilityButton = document.getElementById("main-accessibility-button");
