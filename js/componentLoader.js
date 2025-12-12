@@ -1,33 +1,32 @@
 // js/componentLoader.js
+
 async function loadComponent(url, containerId) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
+   const container = document.getElementById(containerId);
+    if (!container) return;
 
-  // Detectar si estamos dentro de /pages
-  const basePath = window.location.pathname.includes("/pages/")
-    ? "../"  // subir un nivel
-    : "./";  // mismo nivel si estamos en index.html
-
-  try {
-    const response = await fetch(basePath + url);
-    if (!response.ok) throw new Error(`Error al cargar ${url}`);
+   try {
+   // 1. Realiza la solicitud (fetch) a la URL.
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`Error al cargar ${url}`);
 
     const html = await response.text();
-    container.outerHTML = html;
+  // 2. Inyecta el contenido HTML en el contenedor (header-container o footer-container).
+   container.outerHTML = html;
 
     console.log(`✅ Componente cargado correctamente: ${url}`);
-
-    if (url.includes("header.html")) {
-      document.dispatchEvent(new Event("headerLoaded"));
-    } else if (url.includes("footer.html")) {
-      document.dispatchEvent(new Event("footerLoaded"));
-    }
-  } catch (error) {
-    console.error("❌ Error cargando componente:", error);
-  }
+  // 3. Dispara un evento si el header/footer terminó de cargar.
+   if (url.includes("header.html")) {
+  document.dispatchEvent(new Event("headerLoaded"));
+    // Este evento le indica al search.js que puede iniciar.
+   } else if (url.includes("footer.html")) {
+   document.dispatchEvent(new Event("footerLoaded"));
+   }  
+   } catch (error) { // 👈 SINTAXIS CORREGIDA: 'catch' justo después de la llave de cierre de 'try'
+     }
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-  await loadComponent("components/header.html", "header-container");
-  await loadComponent("components/footer.html", "footer-container");
+ // LLAMADA CORREGIDA: Subir a la raíz (../) y entrar a components/
+   await loadComponent("../components/header.html", "header-container");
+   await loadComponent("../components/footer.html", "footer-container");
 });
