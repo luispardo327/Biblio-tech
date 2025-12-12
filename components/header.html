@@ -1,33 +1,55 @@
+<!-- components/header.html -->
+
 <header>
-    <div class="header-content">
-        <a href="/Biblio-tech/index.html" class="logo">
-            <img src="/Biblio-tech/img/LogoWeb.svg" alt="Biblio-tech logo">
-        </a>
+  <div class="header-container">
 
-        <nav>
-            <ul>
-                <li><a href="/Biblio-tech/index.html">Inicio</a></li>
-
-                <li class="dropdown">
-                    <a href="#" class="dropbtn">Cursos</a>
-                    <ul class="dropdown-content">
-                        <li><a href="/Biblio-tech/pages/librosElectronicos.html">Libros electrónicos</a></li>
-                        <li><a href="#">Bases de datos</a></li>
-                        <li><a href="#">Estrategias de búsqueda</a></li>
-                    </ul>
-                </li>
-
-                <li><a href="#">Contacto</a></li>
-            </ul>
-        </nav>
-
-        <div class="search-container">
-            <input id="search-input" type="text" placeholder="Buscar...">
-            <div id="search-results" class="search-results"></div>
-        </div>
-
-        <button id="menu-toggle" class="menu-toggle">
-            <i class="fa-solid fa-bars"></i>
-        </button>
+    <!-- LOGO MOVIL -->
+    <div class="logo">
+      <a href="../index.html">
+        <img src="./img/LogoWebMovil.svg" alt="logo Biblio-tech">
+      </a>
     </div>
+
+    <!-- LOGO DESKTOP -->
+    <div class="logo-desktop">
+      <a href="./index.html">
+        <img src="./img/LogoWeb.svg" alt="logo Biblio-tech desktop">
+      </a>
+    </div>
+
+    <!-- BUSCADOR -->
+    <div class="search">
+      <input id="search-input" type="text" placeholder="Buscar...">
+      <div id="search-results" class="search-results"></div>
+    </div>
+
+    <!-- MENU HAMBURGUESA -->
+    <button id="menu-toggle" class="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- NAV -->
+    <nav>
+      <ul id="main-menu" class="menu-nav">
+
+        <li><a href="./index.html">Inicio</a></li>
+
+        <!-- CURSOS -->
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Cursos</a>
+
+          <ul class="dropdown-content">
+            <li><a href="./pages/librosElectronicos.html">Libros electrónicos</a></li>
+            <li><a href="#">Bases de datos</a></li>
+            <li><a href="#">Estrategias de búsqueda</a></li>
+            <li><a href="#">Tesauros</a></li>
+            <li><a href="#">Operadores booleanos</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#">¿Quiénes somos?</a></li>
+      </ul>
+    </nav>
+
+  </div>
 </header>
