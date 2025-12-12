@@ -1,0 +1,72 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" sizes="32x32" href="../img/libro-digital.png">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <title>Libros electronicos</title>
+    </head>
+    <body>
+        <div class="banner-new"></div>
+            <!-- contenedor para inyeccion con js nuevas practicas -->
+     <div id="header-container"></div>
+
+
+    <main>
+        <section class="content-page-courses">
+    <div class="container-baner-courses">
+    <h2 class="title-libros-electronicos">   Encuentra justo lo que buscas</h2><br>
+    <p class="banner-text-courses">Conoce técnicas rápidas y efectivas para localizar información precisa en internet y bases de datos. En tres videos cortos aprenderás a usar palabras clave, comillas y operadores booleanos para afinar tus búsquedas y ahorrar tiempo.<p>
+</div>
+</section>
+
+
+<section class="main-courses">
+   <div class="video-card">
+     <video controls preload="none"  >
+        <source src="../video/Palabrasclave.mp4" type="video/mp4">
+    </video>
+    <p>Las palabras correctas abren puertas a la información. Aprende en 20 segundos a elegir las mejores palabras clave para tus búsquedas.</p>
+   </div>
+
+    <div class="video-card">
+        <video controls preload="none">
+        <source src="../video/Comillas.mp4" type="video/mp4">
+    </video>
+    <p>Ponle comillas… y encuentra exactamente lo que buscas. Descubre en 20 segundos cómo este truco afina tus resultados</p>
+    </div>
+
+    <div class="video-card">
+        <video  controls preload="none">
+        <source src="../video/OperadoresBoleanos.mp4" type="video/mp4">
+    </video>
+    <p>AND, OR, NOT… tres palabras que cambian tus búsquedas. Aprende en 20 segundos a usarlas para encontrar información como un profesional..</p>
+    </div>
+</section>
+    </main>
+
+     <!-- contenedor para inyeccion de js nuevas practicas -->
+       <div id="footer-container"></div>
+
+    
+            <div class="accessibility-menu-container">
+        <button id="main-accessibility-button" class="main-accessibility-button">
+            <span class="icon">♿</span> </button>
+
+        <div id="accessibility-options" class="accessibility-options hidden">
+            <button id="btn-aumentar-fuente">A+</button>
+            <button id="btn-disminuir-fuente">A-</button>
+            <button id="btn-alto-contraste">Alto Contraste</button>
+            <button id="btn-restablecer">Restablecer</button>
+        </div>
+    </div>
+    <script src="../js/searchData.js"></script>
+    <script src="../js/componentLoader.js"></script>
+    <script src="../js/main.js"></script>
+    </body>
+    </html>
