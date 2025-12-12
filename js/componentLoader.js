@@ -9,24 +9,17 @@ async function loadComponent(url, containerId) {
         if (!response.ok) throw new Error(`Error al cargar ${url}`);
 
         const html = await response.text();
-        container.innerHTML = html; 
-
-        console.log("Cargado:", url);
+        container.innerHTML = html;
 
         if (url.includes("header.html")) {
             document.dispatchEvent(new Event("headerLoaded"));
         }
-
-        if (url.includes("footer.html")) {
-            document.dispatchEvent(new Event("footerLoaded"));
-        }
-
-    } catch (e) {
-        console.error("❌ Error:", e);
+    } catch (err) {
+        console.error(err);
     }
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
-    await loadComponent("./components/header.html", "header-container");
-    await loadComponent("./components/footer.html", "footer-container");
+document.addEventListener("DOMContentLoaded", () => {
+    loadComponent("/Biblio-tech/components/header.html", "header-container");
+    loadComponent("/Biblio-tech/components/footer.html", "footer-container");
 });
