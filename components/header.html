@@ -8,16 +8,17 @@
     </div>
 
     <!-- Logo versión escritorio -->
-    <div class="logo-desktop">
-      <a href="/Biblio-tech/index.html">
-        <img src="/Biblio-tech/img/LogoWeb.svg" alt="logo Biblio-tech-desktop">
-      </a>
-    </div>
-
-    <!-- Barra de búsqueda -->
     <div class="search">
-      <input type="text" placeholder="Buscar...">
-    </div>
+    <input type="text" id="search-input" placeholder="Buscar..." autocomplete="off">
+    
+    <div id="search-results" class="search-results-container"></div>
+</div>
+
+<div class="search">
+    <input type="text" id="search-input" placeholder="Buscar..." autocomplete="off">
+    
+    <div id="search-results" class="search-results-container"></div>
+</div>
 
     <!-- Botón menú hamburguesa -->
     <button id="menu-toggle" class="menu-toggle">

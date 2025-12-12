@@ -70,6 +70,9 @@ header {
     border-radius: 5px;
     background-color: #fff;
     padding: 5px 10px;
+    
+    /* ESTO ES LO NUEVO Y CRUCIAL: */
+    position: relative; /* Hace que los resultados floten pegados a esta caja */
 }
 
 .search input[type="text"] {
@@ -78,6 +81,54 @@ header {
     outline: none;
     padding: 5px;
     font-size: 1em;
+    width: 100%; /* Asegura que ocupe el espacio */
+}
+
+/* --- ESTILOS DE LA LISTA DE RESULTADOS --- */
+
+/* Usamos el ID #search-results para coincidir con tu HTML y JS */
+#search-results {
+    position: absolute;
+    top: 100%; /* Se coloca justo debajo del buscador */
+    left: 0;
+    width: 100%; /* Ocupa el mismo ancho que el buscador */
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 0 0 8px 8px; /* Bordes redondeados solo abajo */
+    margin-top: 2px;
+    z-index: 9999; /* Asegura que flote por encima de todo */
+    max-height: 200px;
+    overflow-y: auto; /* Scroll si hay muchos resultados */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: none; /* Oculto por defecto, el JS lo mostrará */
+}
+
+/* Estilos para cada item encontrado (Generado por JS) */
+.search-result-item {
+    border-bottom: 1px solid #eee;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-item a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: var(--color-texto-oscuro, #000); /* Usa tu variable o negro por defecto */
+    font-size: 0.9em;
+}
+
+.search-result-item a:hover {
+    background-color: var(--color-azul-claro, #e0f7fa); /* Usa tu variable o un azul claro */
+    color: #000;
+}
+
+.search-result-item p {
+    font-size: 0.8em;
+    color: #666;
+    margin-top: 2px;
 }
 
 /* --- Botón Hamburguesa (CSS BASE para móvil) --- */
