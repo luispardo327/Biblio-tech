@@ -9,7 +9,7 @@ async function loadComponent(url, containerId) {
         if (!response.ok) throw new Error(`Error al cargar ${url}`);
 
         const html = await response.text();
-        container.outerHTML = html;
+       container.innerHTML = html;
 
         console.log(`✅ Componente cargado: ${url}`);
 
