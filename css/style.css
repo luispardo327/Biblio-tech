@@ -682,16 +682,16 @@ body.high-contrast textarea {
 
     /* --- HEADER y NAVEGACIÓN --- */
      header {
-        background-color: var(--color-azul-claro);
-        padding: 15px 30px; /* Más padding para pantallas grandes */
-        width: 100%;
-        /* El header será el contenedor principal de Grid */
-        display: grid;
-        grid-template-columns: auto 1fr auto; /* Columna para logo, columna flexible para espacio, columna para search/nav */
-        grid-template-rows: auto auto; /* Dos filas: una para logo/search, otra para nav */
-        gap: 10px 20px; /* Espacio entre filas y columnas */
-        align-items: center; /* Centrar verticalmente los ítems en sus celdas de grid */
-    }
+    background-color: var(--color-azul-claro);
+    padding: 15px 30px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto; 
+    grid-template-rows: auto; 
+    gap: 25px;
+    align-items: center;
+}
+
 
     /* Ocultamos el .header-container porque el header ahora es el grid directamente */
     .header-container {
@@ -706,12 +706,10 @@ body.high-contrast textarea {
     }
 
     .search {
-        grid-column: 3 / 4; /* La barra de búsqueda ocupa la tercera columna */
-        grid-row: 1 / 2; /* Y la primera fila */
-        display: flex; /* Asegura que la barra de búsqueda esté visible */
-        width: auto;
-        max-width: 300px; /* Ajusta el ancho máximo de la barra de búsqueda */
-        margin-bottom: 0;
+        grid-column: 2 / 3; 
+        justify-self: center;
+        max-width: 400px;
+        width: 100%;
     }
 
     .menu-toggle {
@@ -719,25 +717,11 @@ body.high-contrast textarea {
     }
 
     nav {
-        grid-column: 1 / span 3; /* El nav ocupa todas las 3 columnas */
-        grid-row: 2 / 3; /* Y la segunda fila */
-        display: flex !important; /* Muestra el nav */
-        flex-direction: row; /* Ítems del menú horizontalmente */
-        justify-content: center; /* Centra el menú horizontalmente en la segunda fila */
-        position: static;
-        width: auto;
-        height: auto;
-        background-color: transparent; /* Si quieres que el nav tenga el mismo color de fondo que el header */
-        top: auto;
-        left: auto;
-        transform: none;
-        padding: 0;
-        box-shadow: none;
-        opacity: 1;
-        visibility: visible;
-        max-height: none; 
-        overflow: visible; 
-        transition: none; 
+        grid-column: 3 / 4; /* ahora va a la derecha del todo */
+         grid-row: 1 / 2;
+         display: flex !important;
+         justify-content: flex-end;
+          background: transparent;
     }
 
     .menu-nav {
