@@ -33,7 +33,17 @@ body {
     padding: 20px;
 }
 
-
+header { 
+    background-color: white;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #eee; 
+    width: 100%;
+}
 
 .header-container {
     display: flex;
@@ -44,11 +54,7 @@ body {
     z-index: 1000; /* Asegura que el header esté por encima del resto del contenido */
 }
 
-header { 
-    background-color: var(--color-azul-claro);
-    padding: 10px 15px; 
-    width: 100%;
-}
+
 
 .logo {
     width: 150px;
@@ -70,9 +76,8 @@ header {
     border-radius: 5px;
     background-color: #fff;
     padding: 5px 10px;
-    
-    /* ESTO ES LO NUEVO Y CRUCIAL: */
-    position: relative; /* Hace que los resultados floten pegados a esta caja */
+    position: relative;
+    position: relative; 
 }
 
 .search input[type="text"] {
@@ -81,26 +86,25 @@ header {
     outline: none;
     padding: 5px;
     font-size: 1em;
-    width: 100%; /* Asegura que ocupe el espacio */
+    width: 100%; 
 }
 
 /* --- ESTILOS DE LA LISTA DE RESULTADOS --- */
 
-/* Usamos el ID #search-results para coincidir con tu HTML y JS */
 #search-results {
     position: absolute;
-    top: 100%; /* Se coloca justo debajo del buscador */
+    top: 100%; 
     left: 0;
-    width: 100%; /* Ocupa el mismo ancho que el buscador */
+    width: 100%;
     background: white;
     border: 1px solid #ccc;
-    border-radius: 0 0 8px 8px; /* Bordes redondeados solo abajo */
+    border-radius: 0 0 8px 8px;
     margin-top: 2px;
-    z-index: 9999; /* Asegura que flote por encima de todo */
+    z-index: 9999; 
     max-height: 200px;
-    overflow-y: auto; /* Scroll si hay muchos resultados */
+    overflow-y: auto; 
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    display: none; /* Oculto por defecto, el JS lo mostrará */
+    display: none; 
 }
 
 /* Estilos para cada item encontrado (Generado por JS) */
@@ -116,12 +120,12 @@ header {
     display: block;
     padding: 10px;
     text-decoration: none;
-    color: var(--color-texto-oscuro, #000); /* Usa tu variable o negro por defecto */
+    color: var(--color-texto-oscuro, #000); 
     font-size: 0.9em;
 }
 
 .search-result-item a:hover {
-    background-color: var(--color-azul-claro, #e0f7fa); /* Usa tu variable o un azul claro */
+    background-color: var(--color-azul-claro, #e0f7fa); 
     color: #000;
 }
 
@@ -136,7 +140,7 @@ header {
     display: block; 
     position: absolute;
     top: 15px;
-    right: 15px; /* Ajusta la posición horizontal del botón */
+    right: 15px;
     background: none;
     border: none;
     font-size: 1.8em;
@@ -167,10 +171,9 @@ nav.active {
 
 .menu-nav { 
     display: flex;
-    flex-direction: column; /* Apilar los ítems del menú */
+    flex-direction: column; 
     width: 100%;
-    /* No necesita position:absolute ni top/left aquí si la nav lo contiene */
-    padding: 10px 0; /* Padding interno para los ítems del menú */
+    padding: 10px 0;
 }
 
 /* Resto de estilos para los li del menú móvil */
@@ -186,8 +189,8 @@ nav.active {
     padding: 12px 20px;
     text-align: center;
     font-size: 1.1em;
-    color: var(--color-texto-oscuro); /* Asegúrate de que el color sea legible */
-    display: block; /* Para que el padding y click área sean correctos */
+    color: var(--color-texto-oscuro); 
+    display: block;
 }
 
 
@@ -197,7 +200,7 @@ nav.active {
 }
 
 .dropdown-content {
-  position: static; /* En móvil: se comporta como parte del flujo */
+  position: static; 
   width: 100%;
   background-color: rgba(255, 255, 255, 0.95);
   overflow: hidden;
@@ -673,80 +676,79 @@ body.high-contrast textarea {
     }
     
 
-
     /* --- HEADER y NAVEGACIÓN --- */
      header {
-    background-color: var(--color-azul-claro);
-    padding: 15px 30px;
-    width: 100%;
-    display: grid;
-    grid-template-columns: auto 1fr auto; 
-    grid-template-rows: auto; 
-    gap: 25px;
-    align-items: center;
-}
-
-     .header-container {
-        display: contents; /* Hace que los hijos de .header-container se conviertan en ítems de grid directamente */
+        background-color: white; 
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: none;
     }
 
-    .logo {
-        grid-column: 1 / 2; /* El logo ocupa la primera columna */
-        grid-row: 1 / 2; /* Y la primera fila */
-        width: 180px; /* Ajusta el tamaño del logo para tablet/desktop */
-        margin-bottom: 0; /* Aseguramos que no tenga margen de móvil */
+    .header-container {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between; 
+    }
+
+    .logo-desktop {
+        display: block;
+        width: 180px;
+        flex-shrink: 0;
     }
 
     .search {
-        grid-column: 2 / 3; 
-        justify-self: center;
-        max-width: 400px;
-        width: 100%;
+       margin-bottom: 0;
+       max-width: 250px;
+       order: 2;
+       flex-grow: 1;
+       margin: 0 20px;
     }
 
     .menu-toggle {
         display: none; /* Oculta el botón hamburguesa */
     }
 
-  nav {
-    grid-column: 3 / 4 !important; 
-    grid-row: 1 / 2 !important;
-    display: flex !important;
-    justify-content: flex-end !important;
-    align-items: center;
-    background: transparent !important;
-    width: auto !important;
-    max-height: none !important;
-    overflow: visible !important;
-}
-
-
+    nav {
+       display: flex !important;
+       align-items: center;
+       background: transparent !important;
+       width: auto !important;
+       max-height: none !important;
+       overflow: visible !important;
+       order: 3;
+       flex-shrink: 0;
+    }
 
     .menu-nav {
         flex-direction: row; 
         padding: 0;
     }
 
-    .menu-nav li { /* El LI de cada ítem de menú, incluyendo "Cursos" */
+    .menu-nav li { 
         position: relative; 
-        margin-left: 25px;
+        margin-left: 20px;
         border-bottom: none;
+    }
+    .menu-nav li a {
+        font-weight: bold;
+        padding: 5px 10px;
     }
 
     /* Dropdown solo en desktop */
-.dropdown-content {
-  display: none; 
-  position: absolute;
-  background-color: var(--color-fondo-desplegable);
-  min-width: 250px;
-  box-shadow: var(--sombra-desplegable);
-  border-radius: 4px;
-  top: 100%; 
-  left: 0;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(5px);
-  transition: opacity 0.2s ease, transform 0.2s ease;
+ .dropdown-content {
+    position: absolute;
+    min-width: 250px;
+    top: 100%;
+    left: 0;
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(5px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .dropdown:hover .dropdown-content {
@@ -919,7 +921,11 @@ body.high-contrast textarea {
 
     header {
         padding: 20px 50px; /* Más padding para el header */
-        gap: 15px 40px; /* Ajusta el espacio entre elementos del header */
+        gap: 15px 20px; /* Ajusta el espacio entre elementos del header */
+    }
+    .header-container {
+        max-width: 1200px; /* Limita el ancho del contenedor del header */
+        margin: 0 auto; /* Centra el header en la pantalla */
     }
 
     .logo {
