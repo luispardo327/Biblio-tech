@@ -672,13 +672,7 @@ body.high-contrast textarea {
         display: none; 
     }
     
-    .logo-desktop {
-        display: inline-block;
-        grid-column: 1 / 2; 
-        grid-row: 1 / 2;
-        width: 180px;
-        margin-bottom: 0;
-    }
+
 
     /* --- HEADER y NAVEGACIÓN --- */
      header {
@@ -692,9 +686,7 @@ body.high-contrast textarea {
     align-items: center;
 }
 
-
-    /* Ocultamos el .header-container porque el header ahora es el grid directamente */
-    .header-container {
+     .header-container {
         display: contents; /* Hace que los hijos de .header-container se conviertan en ítems de grid directamente */
     }
 
@@ -716,13 +708,19 @@ body.high-contrast textarea {
         display: none; /* Oculta el botón hamburguesa */
     }
 
-    nav {
-        grid-column: 3 / 4; /* ahora va a la derecha del todo */
-         grid-row: 1 / 2;
-         display: flex !important;
-         justify-content: flex-end;
-          background: transparent;
-    }
+  nav {
+    grid-column: 3 / 4 !important; 
+    grid-row: 1 / 2 !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center;
+    background: transparent !important;
+    width: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+
 
     .menu-nav {
         flex-direction: row; 
