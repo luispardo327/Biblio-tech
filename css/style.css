@@ -734,7 +734,7 @@ body.high-contrast textarea {
 
     .menu-nav li { 
         position: relative; 
-        margin-left: 20px;
+        margin-left: 15px;
         border-bottom: none;
     }
     .menu-nav li a {
@@ -912,14 +912,13 @@ body.high-contrast textarea {
     }
 
     .search-container {
-        max-width: 420px; 
-        width: 400px;/* Barra de búsqueda más ancha */
+        max-width: 350px; 
         flex-grow: 1;
     }
 
     
     .menu-nav li {
-        margin-left: 35px; /* Más espacio entre ítems del menú */
+        margin-left: 20px; 
     }
 
     /* --- CONTENEDOR DEL BANNER (Bienvenido) --- */
