@@ -91,39 +91,5 @@ if (dropdownToggle) {
   }
 });
 
-// ---- 4. Búsqueda interna ----
-const searchInput = document.querySelector(".search input");
-const searchResults = document.getElementById("search-results");
 
-if (searchInput && searchResults) {
-  searchInput.addEventListener("input", () => {
-    const query = searchInput.value.toLowerCase().trim();
-    if (query.length === 0) {
-      searchResults.classList.add("hidden");
-      return;
-    }
-
-    const filtered = searchData.filter(item =>
-      item.title.toLowerCase().includes(query) ||
-      item.description.toLowerCase().includes(query)
-    );
-
-    if (filtered.length > 0) {
-      searchResults.innerHTML = filtered
-        .map(item => `<a href="${item.url}"><strong>${item.title}</strong><br>${item.description}</a>`)
-        .join("");
-      searchResults.classList.remove("hidden");
-    } else {
-      searchResults.innerHTML = "<p style='padding:10px; color:#777;'>Sin resultados.</p>";
-      searchResults.classList.remove("hidden");
-    }
-  });
-
-  // Ocultar resultados al hacer clic fuera
-  document.addEventListener("click", (e) => {
-    if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-      searchResults.classList.add("hidden");
-    }
-  });
-}
 

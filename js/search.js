@@ -65,11 +65,11 @@
 }
 
     document.addEventListener('headerLoaded', () => {
-    const searchInput = document.getElementById('search-input');
+    const searchInput = document.getElementById('searchInput'); 
     const resultsContainer = document.getElementById('search-results');
 
     if (searchInput && resultsContainer) {
         initSearchLogic(searchInput, resultsContainer);
         console.log("🔎 Buscador inicializado.");
     }
-});
+    });

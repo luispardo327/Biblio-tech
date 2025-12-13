@@ -707,7 +707,7 @@ body.high-contrast textarea {
         flex-shrink: 0;
     }
 
-    .search {
+    .search-container{
        margin-bottom: 0;
        max-width: 250px;
        order: 2;
@@ -751,15 +751,14 @@ body.high-contrast textarea {
     min-width: 250px;
     top: 100%;
     left: 0;
-    display: none;
     opacity: 0;
     visibility: hidden;
     transform: translateY(5px);
     transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 10;
 }
 
 .dropdown:hover .dropdown-content {
-  display: block;
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -939,9 +938,10 @@ body.high-contrast textarea {
         width: 200px; /* Logo más grande */
     }
 
-    .search {
+    .search-container {
         max-width: 420px; 
         width: 400px;/* Barra de búsqueda más ancha */
+        flex-grow: 1;
     }
 
     
