@@ -40,14 +40,15 @@ header {
     align-items: center;
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 1000; 
     border-bottom: 1px solid #eee; 
     width: 100%;
 }
 
 .header-container {
     display: flex;
-    flex-direction: column; 
+    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center; 
     width: 100%;
     position: relative;
@@ -56,8 +57,10 @@ header {
 
 
 .logo {
+    order: 1;
     width: 150px;
-    margin-bottom: 10px
+    margin-bottom: 0; 
+    margin-right: 10px; 
 }
 .logo-desktop{
     display: none;
@@ -67,18 +70,22 @@ header {
 .search-container {
     display: flex;
     align-items: center;
-    margin-bottom: 10px; 
-    width: 90%; 
-    max-width: 350px; 
+    order: 3; 
+    flex-basis: 100%; 
+    margin-top: 10px; 
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #fff;
     padding: 5px 10px;
     position: relative;
+    width: 90%; 
+    max-width: 400px;
+    margin-left: auto; 
+    margin-right: auto;
 }
 
-.search input {
-    flex-grow: 1;
+.search-container input {
+    flex-grow: 1; 
     border: none;
     outline: none;
     padding: 5px;
@@ -141,9 +148,8 @@ header {
 /* --- Botón Hamburguesa (CSS BASE para móvil) --- */
 .menu-toggle {
     display: block; 
-    position: absolute;
-    top: 15px;
-    right: 15px;
+    position: static;
+    order: 2; 
     background: none;
     border: none;
     font-size: 1.8em;
@@ -159,11 +165,12 @@ header {
 
 /* --- NAVEGACIÓN PRINCIPAL (el contenedor <nav>) --- */
 nav {
-  width: 100%; 
-  max-height: 0; 
-  overflow: hidden; /* Oculta cuando está cerrado */
-  transition: max-height 0.3s ease-out; 
-  background-color: var(--color-azul-claro);
+    order: 4;
+    width: 100%; 
+    max-height: 0; 
+    overflow: hidden; 
+    transition: max-height 0.3s ease-out; 
+    background-color: var(--color-azul-claro);
 }
 
 nav.active { 
@@ -681,51 +688,41 @@ body.high-contrast textarea {
     .logo-desktop {
         display: block;
         width: 180px;
+        flex-shrink: 0;
+        order: 1; 
     }
     
     /* --- HEADER y NAVEGACIÓN --- */
      header {
-        background-color: white; 
         padding: 15px 30px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: none;
     }
 
     .header-container {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        align-items: center;
+        flex-wrap: nowrap; 
+        flex-direction: row; 
         justify-content: space-between; 
     }
 
-    .logo-desktop {
-        display: block;
-        width: 180px;
-        flex-shrink: 0;
-    }
-
     .search-container{
-       margin-bottom: 0;
-       max-width: 250px;
-       order: 2;
-       flex-grow: 1;
-       margin: 0 20px;
+        order: 2;
+        max-width: 300px; 
+        flex-grow: 1; 
+        margin: 0 20px; 
+        flex-basis: auto; 
+        margin-top: 0; 
     }
 
     .menu-toggle {
-        display: none; /* Oculta el botón hamburguesa */
+        display: none; 
     }
 
     nav {
-       display: flex !important;
+       display: flex;
        align-items: center;
-       background: transparent !important;
-       width: auto !important;
-       max-height: none !important;
-       overflow: visible !important;
+       background: transparent;
+       width: auto;
+       max-height: none;
+       overflow: visible ;
        order: 3;
        flex-shrink: 0;
     }
@@ -766,111 +763,87 @@ body.high-contrast textarea {
 
 
 
-    /* --- CONTENEDOR DEL BANNER --- */
-  .container-baner {
-        display: grid;
-        grid-template-columns: 1fr 1fr; /* Dos columnas para los elementos de la segunda fila */
-        grid-template-rows: auto auto auto; /* Tres filas: h1, (p + img), button */
-        gap: 25px; /* Espacio entre filas y columnas (ajusta según necesites) */
-        padding: 30px; /* Más padding para desktop */
+   /* --- BANNER PRINCIPAL (FLEXBOX para la estructura Lado-a-Lado) --- */
+    .container-baner {
+        display: flex; 
+        flex-direction: row; 
+        flex-wrap: wrap; 
+        align-items: center; 
+        justify-content: center; 
+        gap: 30px; 
+        padding: 30px;
         background: var(--gradient-banner);
-        align-items: center; /* Centrar verticalmente en las celdas */
-        justify-items: center; 
-        text-align: center; 
+        max-width: 1200px; 
+        margin: 0 auto;
     }
 
-    /* Asumiendo que h1 es un hijo directo de .container-baner */
-    .container-baner > h1 {
-        grid-column: 1 / span 2; /* Ocupa las dos columnas */
-        grid-row: 1 / 2; /* En la primera fila */
-        font-size: 4.5em; /* Tamaño grande para el título */
-        margin-bottom: 0; /* El gap del grid maneja el espacio */
+    .info-container {
+        text-align: left; /* Alinea el texto a la izquierda en desktop/tablet */
+        max-width: 450px;
+        flex: 1 1 auto;
     }
 
-    /* Asumiendo que p es un hijo directo de .container-baner */
-    .banner-text { /* Usa la clase si la agregas, o selecciona el p directamente */
-        grid-column: 1 / 2; /* Primera columna de la segunda fila */
-        grid-row: 2 / 3; /* Segunda fila */
-        font-size: 1.3em;
-        text-align: left; /* Alineación del texto del párrafo */
-        margin-top: 70px;
-        align-self: start; 
-        justify-self: end; 
-        max-width: 400px; /* Limita el ancho del párrafo para que no sea demasiado largo */
+    .info-container > h1 {
+        font-size: 3.5em; 
+    }
+
+    .info-container > p { 
+        font-size: 1.2em;
+    }
+    
+    .buton-unete {
+        margin: 0; 
+        align-self: flex-start; /* Alinea el botón con el texto */
     }
 
     .content-img {
-        grid-column: 2 / 3; /* Segunda columna de la segunda fila */
-        grid-row: 2 / 3; /* Segunda fila, junto al párrafo */
-        max-width: 100%; /* Asegura que la imagen se ajuste a la celda */
-        text-align: center;
+        max-width: 350px;
+        flex: 1 1 auto;
     }
-
     .content-img > img {
-        width: 100%;
-        height: auto;
-        display: block;
-        border-radius: 5px;
-        max-height: 350px; /* Limita la altura máxima de la imagen para que no sea muy grande */
-        object-fit: contain; /* Para que la imagen se ajuste sin cortarse */
+        max-height: 350px;
     }
 
-    .buton-unete {
-        grid-column: 1 / span 2; /* Ocupa las dos columnas */
-        grid-row: 3 / 4; /* En la tercera fila */
-        margin: 0 auto; /* Centrar horizontalmente */
-        width: 180px; /* Ajusta el tamaño del botón */
-        height: 50px;
-        font-size: 1.2em;
-    }
 
-    /* --- SECCIÓN COMENTARIOS --- */
+    /* --- SECCIÓN COMENTARIOS (Grid: 2 Columnas) --- */
     .comment {
-        display: grid; /* Usar grid para tablet y superiores */
-        grid-template-columns: 1fr; /* Una sola columna para las secciones principales en tablet */
-        gap: 2em;
+        display: block; 
         margin: 3em auto;
         padding: 1em 2em;
-        max-width: 1000px; /* Ancho máximo para toda la sección de comentarios */
+        max-width: 1000px;
     }
 
     .text-comment {
-        grid-column: 1 / -1; /* Ocupa todas las columnas disponibles (que es 1 aquí) */
         text-align: center;
         font-size: 1.3em;
-        max-width: none; /* Eliminar restricción de ancho de móvil */
-        margin-bottom: 1em; /* Añadir algo de espacio debajo del título */
+        max-width: none; 
+        margin-bottom: 1em; 
     }
 
     .second-section {
-        display: grid; /* Usar grid para los propios párrafos de comentarios */
+        display: grid; 
         grid-template-columns: 1fr 1fr; /* Dos columnas para comentarios en tablet */
         gap: 1.5em;
-        width: 100%; /* Ocupar todo el ancho de su padre (.comment) */
-        max-width: none; /* Eliminar restricción de ancho de móvil */
-        margin: 0; /* Eliminar márgenes automáticos */
+        width: 100%; 
+        max-width: none; 
+        margin: 0; 
     }
 
     .paragraph-comment-1,
     .paragraph-comment-2 {
-        text-align: left; /* Alinear texto a la izquierda en tablet */
+        text-align: left; 
     }
 
     .paragraph-comment-3 {
-        grid-column: 1 / -1; /* Ocupa dos columnas para el comentario individual */
-        text-align: center; /* Centrar si ocupa dos columnas */
+        grid-column: 1 / -1; /* Ocupa las dos columnas */
+        text-align: center; 
     }
 
 
-    /* -----seccion de cursos  ---- */
-/* -----De la pagina de cursos------- */
-
-
-.banner-text-courses{
-    font-size: 18px;
-}
- /* Sección de Cursos: Diseño de dos columnas */
-
+    /* --- SECCIÓN CURSOS (Index: Flexbox: 2 Columnas) --- */
+    .banner-text-courses{
+        font-size: 18px;
+    }
     .courses-section {
         flex-direction: row;
         flex-wrap: wrap;
@@ -881,41 +854,41 @@ body.high-contrast textarea {
 
     .recursos-web {
         width: calc(50% - 15px);
+        max-width: 450px;
     }
 
 
-
-
-     /* ------De la pagina de LIBROS ELECTRONICOS---------- */
-
-/* -----en la seccion de banner-------- */
-     .container-baner-courses {
-    min-height: 220px;
-    background-size: cover;
-    background-position: center;
-    padding: 1.5em 1em;
-  }
-
-  .container-baner-courses h2 {
-    font-size: 1.3em;
-  }
-
-  .container-baner-courses p {
-    font-size: 0.9em;
-  }
-     .main-courses {
-        flex-direction: row; /* Ahora los videos se colocan en fila */
-        flex-wrap: wrap; /* Permite que los videos salten a la siguiente fila si no hay espacio */
-        justify-content: center; /* Centra los videos en la fila */
+    /* --- SECCIÓN VIDEOS (Libros Electrónicos: 2 Columnas) --- */
+    .container-baner-courses {
+        min-height: 220px;
+        background-size: cover;
+        background-position: center;
+        padding: 1.5em 1em;
+    }
+    
+    .main-courses {
+        flex-direction: row; 
+        flex-wrap: wrap; 
+        justify-content: center; 
         padding: 20px;
-        gap: 20px; /* Aumenta el espacio entre videos */
+        gap: 20px; 
     }
 
     .video-card {
-        width: calc(33.33% - 20px); /* Establece un ancho para 3 columnas */
-        max-width: 350px;
+        width: calc(50% - 10px); /* DOS COLUMNAS en Tablet */
+        max-width: 450px;
+        flex-direction: column; /* Asegura que el contenido interno se apile */
     }
 
+    .video-card video {
+        width: 100%; /* El video ocupa todo el ancho de la tarjeta */
+        height: auto;
+    }
+    
+    .video-card p {
+        width: auto; 
+        text-align: center;
+    }
 }
 
 /* --- MEDIA QUERY PARA ESCRITORIO (min-width: 1024px) --- */
@@ -927,11 +900,11 @@ body.high-contrast textarea {
 
     header {
         padding: 20px 50px; /* Más padding para el header */
-        gap: 15px 20px; /* Ajusta el espacio entre elementos del header */
     }
     .header-container {
-        max-width: 1200px; /* Limita el ancho del contenedor del header */
-        margin: 0 auto; /* Centra el header en la pantalla */
+        max-width: 1200px; 
+        margin: 0 auto; 
+        justify-content: space-between;
     }
 
     .logo {
@@ -1105,29 +1078,26 @@ body.high-contrast textarea {
         background: var(--gradient-banner);
         height: auto;
         min-height: 480px;
-        display: flex; /* Vuelve a flexbox para la disposición principal */
-        flex-direction: row; /* Contenido y imagen lado a lado */
-        justify-content: center; /* Centrar todo el contenido */
-        align-items: center; /* Centrar verticalmente */
-        gap: 50px; /* Espacio entre el texto y la imagen */
+        display: flex; 
+        flex-direction: row; 
+        justify-content: center; 
+        align-items: center; 
+        gap: 50px; 
         padding: 50px 80px;
     }
 
     .info-container {
         display: flex;
-        flex-direction: column; /* H1, P, Botón apilados */
+        flex-direction: column; 
+        align-items: flex-start;
+        text-align: left;
         gap: 20px;
-        align-items: center; /* Centrar horizontalmente su propio contenido */
-        text-align: center; /* Centrar el texto */
-        flex: 1; /* Permitir que ocupe espacio, pero la imagen también tendrá su propio espacio */
+        flex: 1; 
         max-width: 600px;
     }
 
     .info-container h1 { /* Selector específico */
-        font-weight: bold;
         font-size: 4.5em;
-        margin-bottom: 0;
-        line-height: 1.1;
     }
 
     .info-container p { /* Selector específico */
@@ -1144,6 +1114,7 @@ body.high-contrast textarea {
         height: 45px;
         border-radius: 10px;
         font-size: 1.1em;
+        align-self: flex-start;
         margin: 0;
     }
 
